@@ -23,59 +23,78 @@
             scroll-behavior: smooth;
         }
 
-        /* HEADER */
-        header {
-            width: 100%;
-            padding: 20px 50px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 999;
-            background: rgba(6, 10, 20, 0.75);
-            backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
+        /* NEW PREMIUM HEADER */
+header {
+    width: 100%;
+    padding: 18px 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background: rgba(10, 17, 35, 0.7);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(112, 223, 255, 0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        header .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #70dfff;
-        }
+/* Logo */
+header .logo {
+    font-size: 1.9rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #70dfff, #66b7ff);
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: 1px;
+}
 
-        header nav a {
-            margin-left: 25px;
-            color: #e6f5ff;
-            text-decoration: none;
-            font-weight: 500;
-            transition: 0.3s;
-        }
+/* Nav */
+header nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
 
-        header nav a:hover {
-            color: #70dfff;
-        }
+header nav a {
+    color: #dcecff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.97rem;
+    position: relative;
+    padding-bottom: 3px;
+    transition: 0.3s;
+}
 
-        /* HERO */
-        .hero {
-            text-align: center;
-            padding: 180px 40px 100px;
-        }
+header nav a:hover {
+    color: #70dfff;
+}
 
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
+header nav a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    left: 0;
+    bottom: 0;
+    background: #70dfff;
+    transition: 0.3s;
+}
 
-        .hero p {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 1.2rem;
-            line-height: 1.7;
-            color: #b9cde5;
-        }
+header nav a:hover::after {
+    width: 100%;
+}
+
+/* Mobile Menu for Future*/
+@media (max-width: 850px) {
+    header {
+        padding: 18px 25px;
+    }
+
+    header nav {
+        display: none; /* Hides nav for now, can add mobile menu later */
+    }
+}
 
         /* SECTION TITLES */
         .section-title {
@@ -182,26 +201,18 @@
 <body>
 
     <!-- HEADER -->
-    <header>
-        <div class="logo">Step2Dev</div>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="about.html">About Us</a>
-            <a href="services.html">Services</a>
-            <a href="cloud.html">Cloud Solutions</a>
-            <a href="devopsservice.html">DevOps</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
+   <header>
+    <div class="logo">Step2Dev</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="services.html">Services</a>
+        <a href="cloud.html">Cloud Solutions</a>
+        <a href="devopsservice.html">DevOps</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
 
-    <!-- HERO -->
-    <section class="hero" data-aos="fade-up">
-        <h1>DevOps Services</h1>
-        <p>
-            Accelerate innovation with streamlined development, automated infrastructure,
-            continuous integration, and faster deployment cycles—built for modern businesses.
-        </p>
-    </section>
 
     <!-- OUR OFFERINGS -->
     <h2 class="section-title" data-aos="fade-up">Our Offerings</h2>
