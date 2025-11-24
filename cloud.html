@@ -21,31 +21,63 @@
     }
 
 
-    /* HEADER */
-    header {
-        width: 100%;
-        padding: 20px 8%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 1000;
-        background: rgba(10, 15, 31, 0.35);
-        border-bottom: 1px solid rgba(255,255,255,0.05);
-        backdrop-filter: blur(15px);
-    }
+   
+/* HEADER */
+.header {
+  width:100%;
+  position:fixed;
+  top:0; left:0;
+  backdrop-filter: blur(15px);
+  background: rgba(10,15,31,0.4);
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  z-index:1000;
+  padding:12px 0;
+}
+.header-inner {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
 
-    header a {
-        color: #d6e6ff;
-        margin-left: 22px;
-        text-decoration: none;
-        transition: .3s;
-    }
-    header a:hover {
-        color: #4da3ff;
-    }
+.brand .logo {
+  font-size:1.7rem;
+  font-weight:700;
+  color:#4AB3FF;
+}
+.brand .tag {
+  font-size:0.85rem;
+  opacity:0.8;
+}
+
+/* NAV */
+.nav a {
+  color:#d9e6ff;
+  text-decoration:none;
+  margin:0 15px;
+  font-size:0.95rem;
+  transition:0.3s;
+}
+.nav a:hover { color:#4AB3FF; }
+
+.nav .cta-ghost {
+  padding:8px 18px;
+  border:1px solid #4AB3FF;
+  border-radius:6px;
+  transition:0.3s;
+}
+.nav .cta-ghost:hover {
+  background:#4AB3FF;
+  color:#fff;
+}
+
+/* HAMBURGER */
+.hamburger {
+  display:none;
+  font-size:1.5rem;
+  color:#fff;
+  background:none;
+  border:none;
+}
 
     /* HERO */
     .hero {
@@ -179,17 +211,26 @@
 <body>
 
 <!-- HEADER -->
-<header class="header">
-    <h2 style="color:white; font-weight:700;">Step2Dev</h2>
-    <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="services.html">Services</a>
-        <a href="cloud.html">Cloud</a>
-        <a href="contact.html">Contact</a>
-    </nav>
-</header>
+<header class="header" role="banner">
+  <div class="header-inner container">
+    <div class="brand">
+      <div class="logo" aria-hidden="false">Step2Dev</div>
+      <div class="tag" aria-hidden="true">Cloud • DevOps • SRE</div>
+    </div>
 
+    <nav class="nav" role="navigation" aria-label="Main Navigation">
+      <a href="#hero">Home</a>
+      <a href="#services">Services</a>
+      <a href="about.html" target="_blank">About</a>
+      <a href="case.html">Case Studies</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+      <a class="cta-ghost" href="#contact">Book a Call</a>
+    </nav>
+
+    <button class="hamburger" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</header>
 <!-- HERO -->
 <section class="hero" data-reveal>
     <h1>Powerful & Scalable Cloud Solutions</h1>
