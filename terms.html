@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms & Conditions | Step2Dev</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Base Reset */
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Inter', sans-serif; }
+    body { background:#0a0f1e; color:#e6e6e6; line-height:1.7; scroll-behavior:smooth; }
+
+    /* Header */
+    header { width:100%; position:fixed; top:0; left:0; background:#0a0f1e; padding:15px 0; border-bottom:1px solid #222; z-index:1000; }
+    .header-inner { max-width:1200px; margin:auto; display:flex; justify-content:space-between; align-items:center; padding:0 20px; }
+    .logo { font-size:1.8rem; font-weight:700; color:#00ffff; letter-spacing:1px; }
+    nav a { margin:0 15px; font-size:0.95rem; color:#fff; transition:0.3s; }
+    nav a:hover { color:#00ffff; }
+
+    /* Container */
+    .container { max-width:1000px; margin:120px auto 40px; padding:0 20px; }
+
+    /* Headings */
+    h1, h2 { color:#00ffff; margin-bottom:20px; text-align:center; opacity:0; transform:translateY(30px); transition:all 0.8s ease-out; }
+    h1 { font-size:2.8rem; }
+    h2 { font-size:1.8rem; margin-top:40px; text-align:left; }
+
+    h1.active, h2.active { opacity:1; transform:translateY(0); }
+
+    /* Paragraphs */
+    p { margin-bottom:15px; font-size:1.05rem; color:#cfd8dc; }
+    ol, ul { margin-left:20px; margin-bottom:20px; }
+    li { margin-bottom:10px; }
+
+    /* Highlight Cards */
+    .cards { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; margin-top:20px; }
+    .card { flex:1 1 300px; background:#121a33; padding:25px; border-radius:15px; text-align:left; box-shadow:0 10px 25px rgba(0,0,0,0.5); border:1px solid #00ffff; transition:all 0.5s ease; opacity:0; transform:translateY(30px); }
+    .card:hover { transform:translateY(-5px); box-shadow:0 15px 30px rgba(0,255,255,0.3); }
+    .card.active { opacity:1; transform:translateY(0); }
+    .card h3 { color:#00ffff; margin-bottom:10px; font-size:1.2rem; }
+    .card p { color:#b0bec5; font-size:1rem; }
+
+    /* Footer */
+    footer { background:#0a0f1e; color:#cfd8dc; text-align:center; padding:50px 20px; margin-top:60px; border-top:1px solid #00ffff; }
+    footer a { color:#00ffff; transition:0.3s; }
+    footer a:hover { color:#ff6ec7; }
+    .footer-links { display:flex; flex-wrap:wrap; justify-content:center; gap:15px; margin-top:10px; }
+
+    /* Section Spacing */
+    section { padding:50px 0; border-bottom:1px solid #222; }
+
+    /* Responsive */
+    @media(max-width:768px){ .cards { flex-direction:column; align-items:center; } nav { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; } }
+
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <div class="logo">Step2Dev</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+        <a href="quote.html">Get a Quote</a>
+        <a href="terms.html">Terms & Conditions</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <div class="container">
+    <h1>Terms & Conditions</h1>
+    <p>Welcome to Step2Dev. By accessing or using our website and services, you agree to be bound by these Terms & Conditions. Please read carefully. If you do not agree, please refrain from using our services.</p>
+
+    <section>
+      <h2>1. Definitions</h2>
+      <p>“We”, “Us”, “Our” refers to Step2Dev.<br>
+      “You”, “User” refers to any individual or entity accessing our services.</p>
+    </section>
+
+    <section>
+      <h2>2. Acceptance of Terms</h2>
+      <p>By accessing or using our website, you acknowledge that you have read, understood, and agree to be bound by these Terms, our Privacy Policy, and any other applicable rules.</p>
+    </section>
+
+    <section>
+      <h2>3. Changes to Terms</h2>
+      <p>Step2Dev may modify these Terms at any time. Changes are effective immediately upon posting. Continued use of our services indicates acceptance of revised Terms.</p>
+    </section>
+
+    <section>
+      <h2>4. Our Services</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Cloud Solutions</h3>
+          <p>Design, deploy, and optimize cloud infrastructure on AWS, Azure, and GCP.</p>
+        </div>
+        <div class="card">
+          <h3>DevOps & CI/CD</h3>
+          <p>Automated pipelines to accelerate deployment and enhance productivity.</p>
+        </div>
+        <div class="card">
+          <h3>SRE & Monitoring</h3>
+          <p>Ensure system reliability, uptime, and proactive monitoring solutions.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>5. User Responsibilities</h2>
+      <ol>
+        <li><strong>Eligibility:</strong> You must be at least 18 years old.</li>
+        <li><strong>Prohibited Activities:</strong> Illegal activities, IP infringement, or disrupting our services are forbidden.</li>
+        <li><strong>Account Security:</strong> Users are responsible for their login credentials.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>6. Intellectual Property</h2>
+      <p>All content, logos, and intellectual property are owned by Step2Dev or partners. Unauthorized use is prohibited.</p>
+    </section>
+
+    <section>
+      <h2>7. Disclaimers & Limitation of Liability</h2>
+      <p>Services are provided “as-is” without warranty. Step2Dev is not liable for any damages arising from use of our services.</p>
+    </section>
+
+    <section>
+      <h2>8. Indemnification</h2>
+      <p>You agree to indemnify Step2Dev and its affiliates against claims arising from your use or violation of Terms.</p>
+    </section>
+
+    <section>
+      <h2>9. Termination</h2>
+      <p>Step2Dev may suspend or terminate your access without notice for violations of these Terms.</p>
+    </section>
+
+    <section>
+      <h2>10. Governing Law</h2>
+      <p>Terms are governed by Indian law. Disputes are subject to Jaipur jurisdiction.</p>
+    </section>
+
+    <section>
+      <h2>11. Third-Party Links</h2>
+      <p>We may link to external sites. Step2Dev is not responsible for content or privacy of external websites.</p>
+    </section>
+
+    <section>
+      <h2>12. Contact Information</h2>
+      <p>Step2Dev<br>
+      Jaipur, Rajasthan, India<br>
+      Email: <a href="mailto:ashh@step2dev.com">ashh@step2dev.com</a><br>
+      Phone: +91-9876543210</p>
+    </section>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Step2Dev. All Rights Reserved.</p>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy Policy</a> | 
+      <a href="terms.html">Terms & Conditions</a> | 
+      <a href="index.html">Home</a> | 
+      <a href="about.html">About Us</a> | 
+      <a href="contact.html">Contact Us</a>
+    </div>
+    <p>Email: <a href="mailto:ashh@step2dev.com">ashh@step2dev.com</a> | Phone: +91-9876543210</p>
+  </footer>
+
+  <!-- Scroll Animation Script -->
+  <script>
+    const elements = document.querySelectorAll('h1, h2, .card');
+
+    function animateOnScroll() {
+      const triggerBottom = window.innerHeight * 0.85;
+      elements.forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        if(top < triggerBottom){
+          el.classList.add('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', animateOnScroll);
+    window.addEventListener('load', animateOnScroll);
+  </script>
+
+</body>
+</html>
