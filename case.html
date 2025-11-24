@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Case Studies - Step2Dev</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg-1: #050812;
+    --card-bg: rgba(255,255,255,0.04);
+    --accent: #52aaff;
+    --btn: #1a76ff;
+    --glass: rgba(255,255,255,0.04);
+  }
+
+  html,body{height:100%;margin:0;font-family:"Montserrat",sans-serif;background:
+    linear-gradient(180deg,var(--bg-1),#03060c);color:#e6f5ff;-webkit-font-smoothing:antialiased;}
+
+  /* Header */
+  header{
+    position:fixed;top:0;left:0;right:0;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 40px;background:rgba(0,0,0,0.55);backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(255,255,255,0.03);z-index:1200;
+  }
+  .logo{color:var(--accent);font-weight:800;font-size:1.05rem;}
+  nav{display:flex;gap:14px;align-items:center;}
+  nav a{color:inherit;text-decoration:none;font-weight:500;opacity:0.95}
+  nav a:hover{color:var(--accent)}
+
+  .btn-quote{background:var(--btn);padding:8px 14px;border-radius:8px;color:#fff;text-decoration:none;font-weight:600;}
+
+  /* Hero */
+  .hero{padding:110px 20px 32px;text-align:center}
+  .hero h1{font-size:2.6rem;margin:0;color:var(--accent);font-weight:800}
+  .hero p{max-width:920px;margin:12px auto 0;color:#cfe7ff;line-height:1.6}
+
+  /* Container */
+  .container{max-width:1200px;margin:0 auto;padding:28px 20px 80px}
+
+  /* Grid */
+  .case-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:22px;
+    margin-top:26px;
+  }
+
+  /* Card */
+  .case-card{
+    background:var(--card-bg);
+    padding:20px;border-radius:14px;border:1px solid rgba(255,255,255,0.06);
+    transition:transform .28s ease,box-shadow .28s ease;
+    box-shadow:0 6px 20px rgba(0,0,0,0.5);
+    display:flex;flex-direction:column;gap:10px;cursor:pointer;
+    min-height:160px;
+  }
+  .case-card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(0,140,255,0.08)}
+  .case-card h3{margin:0;font-size:1.05rem;color:var(--accent);font-weight:700}
+  .case-card .meta{font-size:0.86rem;color:#98cfff}
+  .case-card p{margin:0;color:#d7e9ff;line-height:1.45;white-space:pre-line}
+  .case-card .skills{font-size:0.82rem;color:#bfe4ff;margin-top:8px}
+
+  .card-footer{display:flex;gap:8px;align-items:center;margin-top:auto}
+  .view-btn{background:var(--btn);border:none;padding:9px 14px;border-radius:8px;color:white;font-weight:600;cursor:pointer}
+  .view-btn:hover{background:var(--accent)}
+  .tag{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:8px;color:#cfe7ff;font-size:0.9rem}
+
+  /* long text scroll in card */
+  .long-text{max-height:200px;overflow:auto;padding-right:6px}
+  .long-text::-webkit-scrollbar{width:6px}
+  .long-text::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.06);border-radius:10px}
+
+  /* Popup overlay */
+  .overlay{
+    position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+    background:rgba(0,0,0,0.72);backdrop-filter:blur(6px);opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s;
+    z-index:1500;padding:20px;
+  }
+  .overlay.show{opacity:1;visibility:visible}
+
+  /* The actual popup card (center) */
+  .popup{
+    width:80%;max-width:980px;background:linear-gradient(180deg,rgba(20,28,45,0.98),rgba(12,16,24,0.98));
+    border-radius:14px;padding:26px;border:1px solid rgba(255,255,255,0.04);
+    box-shadow:0 24px 80px rgba(0,0,0,0.6);max-height:86vh;overflow:auto;
+    transform-origin:center center;transition:transform .32s cubic-bezier(.2,.9,.2,1),opacity .28s;
+  }
+  .popup h2{margin-top:0;color:var(--accent)}
+  .popup .meta{color:#98cfff;margin-bottom:8px}
+  .popup p{color:#d7e9ff;line-height:1.6;white-space:pre-line}
+
+  /* Close button */
+  .close-btn{
+    background:transparent;border:1px solid rgba(255,255,255,0.06);color:#cfe7ff;padding:8px 12px;border-radius:8px;cursor:pointer;float:right
+  }
+  .close-btn:hover{background:rgba(255,255,255,0.02)}
+
+  /* Clone animation styles */
+  .card-clone{
+    position:fixed;z-index:1600;border-radius:14px;overflow:hidden;
+    box-shadow:0 30px 80px rgba(0,0,0,0.6);transition:transform .42s cubic-bezier(.2,.9,.2,1),opacity .2s;
+    will-change:transform;
+  }
+
+  /* Responsive */
+  @media(max-width:900px){
+    .popup{width:92%}
+    .hero h1{font-size:2rem}
+  }
+  @media(max-width:520px){
+    header{padding:10px 14px}
+    .hero{padding-top:90px}
+    .case-card{min-height:130px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Step2Dev</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="case.html">Case Studies</a>
+    <a href="contact.html">Contact</a>
+    <a class="btn-quote" href="quote.html">Get a Quote</a>
+  </nav>
+</header>
+
+<section class="hero" aria-hidden="false">
+  <h1>Case Studies</h1>
+  <p>Explore real projects we've delivered — from cloud migrations and automation to full CI/CD platforms and cost optimization.</p>
+</section>
+
+<main class="container" role="main">
+  <div class="case-grid" id="caseGrid">
+
+    <!-- 1: E-Commerce Cloud Migration (sample) -->
+    <article class="case-card" data-id="1" tabindex="0" role="button" aria-pressed="false">
+      <h3>E-Commerce Cloud Migration</h3>
+      <div class="meta">Cloud Migration · AWS · CI/CD</div>
+      <div class="long-text">
+        <p>
+We migrated the entire e-commerce infrastructure from shared hosting to AWS using EC2, RDS, S3, CloudFront & load balancers. The migration included moving static assets to S3 with CloudFront CDN, lifting and shifting the application to EC2 with Auto Scaling, and moving the database to Amazon RDS for managed backups and replication.
+
+Result: ~40% cost reduction, 60% faster load times, and an automated CI/CD pipeline using AWS CodePipeline for zero-downtime deployments. CloudWatch monitoring and runbooks were created for failover and rollback.
+        </p>
+      </div>
+      <div class="skills">Skills: AWS EC2 · RDS · S3 · CloudFront · CodePipeline</div>
+      <div class="card-footer">
+        <button class="view-btn" onclick="handleOpen(event,1)">View Project</button>
+        <div class="tag">Live case study</div>
+      </div>
+    </article>
+
+    <!-- 2: Real-Time Monitoring System (sample) -->
+    <article class="case-card" data-id="2" tabindex="0" role="button" aria-pressed="false">
+      <h3>Real-Time Monitoring System</h3>
+      <div class="meta">Monitoring · Grafana · Prometheus</div>
+      <div class="long-text">
+        <p>
+Built a comprehensive real-time monitoring & alerting system using Prometheus for metrics collection, Grafana for visualization, Loki for log aggregation, and Alertmanager for automated notifications. Custom dashboards for CPU, memory, network, and microservice health were created and alerts were integrated with Slack and email.
+        </p>
+      </div>
+      <div class="skills">Skills: Prometheus · Grafana · Loki · Alertmanager</div>
+      <div class="card-footer">
+        <button class="view-btn" onclick="handleOpen(event,2)">View Project</button>
+        <div class="tag">Monitoring & alerts</div>
+      </div>
+    </article>
+
+    <!-- 4: CI/CD Pipeline Automation (sample) -->
+    <article class="case-card" data-id="4" tabindex="0" role="button" aria-pressed="false">
+      <h3>CI/CD Pipeline Automation</h3>
+      <div class="meta">CI/CD · GitHub Actions · ArgoCD</div>
+      <div class="long-text">
+        <p>
+Created fully automated build → test → deploy pipelines using GitHub Actions, Docker, Kubernetes & ArgoCD. Pipelines included build, unit/integration tests, image scanning, canary rollouts and automated rollback logic — deployment time dropped from ~30 minutes to ~2 minutes.
+        </p>
+      </div>
+      <div class="skills">Skills: GitHub Actions · Docker · ArgoCD</div>
+      <div class="card-footer">
+        <button class="view-btn" onclick="handleOpen(event,4)">View Project</button>
+        <div class="tag">Pipeline automation</div>
+      </div>
+    </article>
+
+    <!-- 5: Automated CI/CD Pipeline & Dockerized Deployment (real) -->
+    <article class="case-card" data-id="5" tabindex="0" role="button" aria-pressed="false">
+      <h3>💼 Automated CI/CD Pipeline & Dockerized Deployment</h3>
+      <div class="meta">Company: Intellipaat · Jenkins · Docker · Ansible · AWS</div>
+      <div class="long-text">
+        <p>
+🚀 Implemented a fully automated DevOps lifecycle for a web application hosted on GitHub, showcasing hands-on expertise in CI/CD, containerization, configuration management, and cloud deployment.
+
+Branch-based workflow:
+• develop → automated builds & tests
+• master → build, test & production deploy
+
+Used Jenkins multibranch pipelines, AWS CodeBuild, Docker best-practices, and Ansible automation (install.sh, master.sh, slave.sh + playbook.yml) for reproducible environments and fast releases.
+        </p>
+        <p>Skills: Jenkins · Docker · Ansible · AWS · GitHub · CI/CD</p>
+      </div>
+      <div class="skills">Skills: Jenkins · Docker · Ansible · AWS</div>
+      <div class="card-footer">
+        <button class="view-btn" onclick="handleOpen(event,5)">View Project</button>
+        <div class="tag">Associated with Intellipaat</div>
+      </div>
+    </article>
+
+    <!-- 6: Deploying a Multi-Tier Web Application on AWS (real) -->
+    <article class="case-card" data-id="6" tabindex="0" role="button" aria-pressed="false">
+      <h3>🚀 Deploying a Multi-Tier Web Application on AWS</h3>
+      <div class="meta">Company: Intellipaat · EC2 · RDS · Auto Scaling</div>
+      <div class="long-text">
+        <p>
+Designed and implemented a highly available, scalable multi-tier web application on AWS, migrating a PHP-MySQL website from on-premises to AWS.
+
+Key tasks:
+• EC2 web tier with Auto Scaling
+• Amazon RDS (MySQL) for managed DB
+• VPC, Subnets, Security Groups and private DB access
+• CloudWatch monitoring & Auto Scaling policies
+Result: secure, fault-tolerant, auto-scaled hosting with improved uptime.
+        </p>
+        <p>Skills: AWS EC2 · RDS · Auto Scaling · VPC</p>
+      </div>
+      <div class="skills">Skills: EC2 · RDS · Auto Scaling · VPC</div>
+      <div class="card-footer">
+        <button class="view-btn" onclick="handleOpen(event,6)">View Project</button>
+        <div class="tag">Associated with Intellipaat</div>
+      </div>
+    </article>
+
+    <!-- 7: End-to-End CI/CD Automation with Jenkins, Terraform, Docker & EKS (real) -->
+    <article class="case-card" data-id="7" tabindex="0" role="button" aria-pressed="false">
+      <h3>💰 End-to-End CI/CD with Jenkins, Terraform, Docker & EKS</h3>
+      <div class="meta">Company: Intellipaat · Terraform · EKS · Trivy · Maven</div>
+      <div class="long-text">
+        <p>
+Built enterprise CI/CD for a Java monolith with IaC and Kubernetes delivery:
+
+• Terraform for VPC & EKS
+• Jenkins multibranch pipelines + Maven + Trivy
+• Docker image build → push to registry
+• Kubernetes manifests & rollouts (2 replicas)
+• Ansible automation for toolchain bootstrapping
+
+Outcome: repeatable infra provisioning, automated image scanning and secure deployments.
+        </p>
+        <p>Skills: Terraform · Jenkins · Docker · Kubernetes · Trivy</p>
+      </div>
+      <div class="skills">Skills: Terraform · Jenkins · Docker · EKS</div>
+      <div class="card-footer">
+        <button class="view-btn" onclick="handleOpen(event,7)">View Project</button>
+        <div class="tag">Associated with Intellipaat</div>
+      </div>
+    </article>
+
+  </div>
+</main>
+
+<!-- Overlay + popup containers (single overlay reused for any project) -->
+<div id="overlay" class="overlay" aria-hidden="true">
+  <div id="popup" class="popup" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+    <button id="closeBtn" class="close-btn" aria-label="Close">&times;</button>
+    <h2 id="popupTitle"></h2>
+    <div id="popupMeta" class="meta"></div>
+    <div id="popupBody"></div>
+  </div>
+</div>
+
+<script>
+/* 
+ Expand-in animation logic:
+ - Clone the clicked card, absolutely position the clone over the original card.
+ - Animate the clone to center & scaled size matching popup (80% width).
+ - When animation ends, show the real popup overlay and remove clone.
+ - On close, animate a clone from the popup position back to the original card rect.
+*/
+
+const overlay = document.getElementById('overlay');
+const popup = document.getElementById('popup');
+const popupTitle = document.getElementById('popupTitle');
+const popupMeta = document.getElementById('popupMeta');
+const popupBody = document.getElementById('popupBody');
+const closeBtn = document.getElementById('closeBtn');
+
+let activeCardElement = null;
+let activeCardRect = null;
+let isAnimating = false;
+
+// Modal content store (descriptions)
+const modalData = {
+  1: {
+    title: "E-Commerce Cloud Migration",
+    meta: "Cloud Migration · AWS · CodePipeline",
+    body: `We migrated the entire e-commerce infrastructure from shared hosting to AWS using EC2, RDS, S3, CloudFront & load balancers.\n\nResult: ~40% cost reduction, 60% faster load times, and an automated CI/CD pipeline using AWS CodePipeline for zero-downtime deployments.`
+  },
+  2: {
+    title: "Real-Time Monitoring System",
+    meta: "Prometheus · Grafana · Loki",
+    body: `Built a real-time monitoring & alerting system using Prometheus, Grafana, Loki and Alertmanager.\n\nDesigned dashboards and integrated alerts with Slack & Email reducing MTTD and MTTR.`
+  },
+  3: {
+    title: "Full-Stack Web App",
+    meta: "Kubernetes · Microservices · Auth",
+    body: `Developed a full-stack web app with authentication, role-based dashboards, analytics, REST APIs, automated testing and Kubernetes-based microservices orchestration.`
+  },
+  4: {
+    title: "CI/CD Pipeline Automation",
+    meta: "GitHub Actions · ArgoCD · Docker",
+    body: `Created end-to-end CI → CD pipelines with GitHub Actions, Docker and ArgoCD. Included build, test, image scanning and safe canary rollouts. Deployment time reduced dramatically.`
+  },
+  5: {
+    title: "Automated CI/CD Pipeline & Dockerized Deployment",
+    meta: "Intellipaat · Jenkins · Docker · Ansible · AWS",
+    body: `Implemented a fully automated DevOps lifecycle for a GitHub-hosted web app.\n\nHighlights:\n• Branch workflow: develop → tests, master → build & deploy\n• Jenkins multibranch pipelines & AWS CodeBuild\n• Dockerization + image tagging\n• Ansible scripts and playbooks for reproducible server setup\n\nSkills: Jenkins · Docker · Ansible · AWS · GitHub`
+  },
+  6: {
+    title: "Deploying a Multi-Tier Web Application on AWS",
+    meta: "Intellipaat · EC2 · RDS · Auto Scaling",
+    body: `Designed and implemented a multi-tier AWS architecture with EC2, RDS and Auto Scaling. Implemented VPC, subnets, security groups and monitoring. Result: fault-tolerant, auto-scaled web hosting.`
+  },
+  7: {
+    title: "End-to-End CI/CD with Jenkins, Terraform, Docker & EKS",
+    meta: "Intellipaat · Terraform · EKS · Trivy",
+    body: `Built CI/CD for a Java app using Terraform (IaC), Jenkins pipelines, Trivy scanning, Docker image automation and EKS deployments.\n\nOutcome: repeatable infra provisioning and secure production deployment workflows.`
+  }
+};
+
+// open handler (attached to button onclick to avoid double clicks)
+function handleOpen(evt, id) {
+  if (isAnimating) return;
+  // find the card element (we want the article)
+  let card;
+  if (evt.currentTarget && evt.currentTarget.closest) {
+    // if button inside card
+    card = evt.currentTarget.closest('.case-card');
+  }
+  if (!card) {
+    // fallback: find by data-id
+    card = document.querySelector(`.case-card[data-id="${id}"]`);
+  }
+  openAnimated(card, id);
+}
+
+function openAnimated(card, id) {
+  if (!card || isAnimating) return;
+  isAnimating = true;
+  activeCardElement = card;
+  activeCardRect = card.getBoundingClientRect();
+
+  // create clone
+  const clone = card.cloneNode(true);
+  clone.classList.add('card-clone');
+  // set initial position and size from card rect
+  clone.style.left = activeCardRect.left + 'px';
+  clone.style.top = activeCardRect.top + 'px';
+  clone.style.width = activeCardRect.width + 'px';
+  clone.style.height = activeCardRect.height + 'px';
+  clone.style.margin = 0;
+  clone.style.transform = 'none';
+  document.body.appendChild(clone);
+
+  // compute target transform (center, scaled)
+  const viewportW = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+  const viewportH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+
+  // target popup size (80% width, max 980)
+  const targetWidth = Math.min(Math.round(viewportW * 0.8), 980);
+  const targetHeight = Math.round(viewportH * 0.86);
+
+  const targetLeft = Math.round((viewportW - targetWidth) / 2);
+  const targetTop = Math.round((viewportH - targetHeight) / 2);
+
+  // compute scale & translate
+  const scaleX = targetWidth / activeCardRect.width;
+  const scaleY = targetHeight / activeCardRect.height;
+  const scale = Math.min(scaleX, scaleY); // scale uniformly
+  // After scaling, compute center offsets
+  const cloneCenterX = activeCardRect.left + activeCardRect.width/2;
+  const cloneCenterY = activeCardRect.top + activeCardRect.height/2;
+  const targetCenterX = targetLeft + targetWidth/2;
+  const targetCenterY = targetTop + targetHeight/2;
+  const deltaX = targetCenterX - cloneCenterX;
+  const deltaY = targetCenterY - cloneCenterY;
+
+  // force reflow then animate
+  requestAnimationFrame(() => {
+    clone.style.transition = 'transform .42s cubic-bezier(.2,.9,.2,1),opacity .18s';
+    clone.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${scale})`;
+  });
+
+  // when clone finishes moving, show the real popup and remove clone
+  clone.addEventListener('transitionend', function onEnd(e) {
+    clone.removeEventListener('transitionend', onEnd);
+    // populate popup contents
+    showPopup(id);
+    // fade clone out quickly
+    clone.style.transition = 'opacity .12s';
+    clone.style.opacity = '0';
+    setTimeout(()=> { try{ document.body.removeChild(clone);}catch(e){} },140);
+    isAnimating = false;
+  });
+}
+
+// populate and show overlay/popup
+function showPopup(id) {
+  const data = modalData[id];
+  popupTitle.textContent = data.title || '';
+  popupMeta.textContent = data.meta || '';
+  popupBody.textContent = data.body || '';
+  overlay.classList.add('show');
+  overlay.setAttribute('aria-hidden','false');
+  // ensure popup is focused for accessibility
+  setTimeout(()=> popup.setAttribute('tabindex','-1') && popup.focus(),60);
+}
+
+// close flow: animate shrink back to card
+closeBtn.addEventListener('click', () => {
+  if (isAnimating) return;
+  closeAnimated();
+});
+overlay.addEventListener('click', (e) => {
+  if (e.target === overlay) { // click outside popup
+    if (isAnimating) return;
+    closeAnimated();
+  }
+});
+
+// close with reverse animation
+function closeAnimated() {
+  // if we have an active card (the one that opened the popup)
+  // find the card element by activeCardElement if stored, else try to match by title
+  const title = popupTitle.textContent;
+  // find matching card if activeCardElement is null
+  let card = activeCardElement;
+  if (!card) {
+    const all = document.querySelectorAll('.case-card');
+    for (const c of all) {
+      if (c.querySelector('h3') && c.querySelector('h3').innerText.trim() === title.trim()) {
+        card = c; break;
+      }
+    }
+  }
+  // hide overlay now visually but we'll animate a clone from popup to card
+  overlay.classList.remove('show');
+  overlay.setAttribute('aria-hidden','true');
+
+  // compute popup rect for starting clone
+  const popupRect = popup.getBoundingClientRect();
+  const targetRect = card ? card.getBoundingClientRect() : null;
+
+  // create clone from popup (simple box)
+  const clone = document.createElement('div');
+  clone.className = 'card-clone';
+  clone.style.left = popupRect.left + 'px';
+  clone.style.top = popupRect.top + 'px';
+  clone.style.width = popupRect.width + 'px';
+  clone.style.height = popupRect.height + 'px';
+  clone.style.opacity = '0.95';
+  clone.style.background = getComputedStyle(card || document.body).background || 'rgba(26,26,26,1)';
+  document.body.appendChild(clone);
+
+  // small delay to ensure appended
+  requestAnimationFrame(() => {
+    if (targetRect) {
+      const deltaX = (targetRect.left + targetRect.width/2) - (popupRect.left + popupRect.width/2);
+      const deltaY = (targetRect.top + targetRect.height/2) - (popupRect.top + popupRect.height/2);
+      const scaleX = targetRect.width / popupRect.width;
+      const scaleY = targetRect.height / popupRect.height;
+      const scale = Math.min(scaleX, scaleY);
+      clone.style.transition = 'transform .42s cubic-bezier(.2,.9,.2,1),opacity .2s';
+      clone.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${scale})`;
+    } else {
+      // if no target (shouldn't happen), fade out
+      clone.style.transition = 'opacity .18s';
+      clone.style.opacity = '0';
+    }
+  });
+
+  // cleanup after animation
+  clone.addEventListener('transitionend', function onEnd(){
+    clone.removeEventListener('transitionend', onEnd);
+    try{ document.body.removeChild(clone); }catch(e){}
+    // clear active card
+    activeCardElement = null;
+    activeCardRect = null;
+    isAnimating = false;
+  }, {once:true});
+}
+
+// keyboard: Esc to close
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && overlay.classList.contains('show')) {
+    if (!isAnimating) closeAnimated();
+  }
+});
+
+// make cards keyboard accessible: open on Enter/Space
+document.querySelectorAll('.case-card').forEach(card => {
+  card.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      const id = card.getAttribute('data-id');
+      handleOpen({currentTarget: card}, parseInt(id,10));
+    }
+  });
+});
+</script>
+
+</body>
+</html>
