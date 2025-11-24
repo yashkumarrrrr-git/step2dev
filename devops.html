@@ -1,16 +1,27 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<title>Step2Dev — Cloud, DevOps & SRE Engineering</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DevOps Services | Step2Dev</title>
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- FontAwesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            background: #060a14;
+            color: #e6f5ff;
+            font-family: "Poppins", sans-serif;
+            scroll-behavior: smooth;
+        }
 <style>
 * { margin:0; padding:0; box-sizing:border-box; font-family:"Inter",sans-serif; }
 
@@ -75,26 +86,25 @@ body { background:#0A0F1F; color:#fff; scroll-behavior:smooth; }
   border:none;
 }
 
-/* HAMBURGER */
-.hamburger {
-  display:none;
-  font-size:1.5rem;
-  color:#fff;
-  background:none;
-  border:none;
-}
+        /* HERO */
+        .hero {
+            text-align: center;
+            padding: 180px 40px 100px;
+        }
 
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
 
-/* Mobile Menu for Future*/
-@media (max-width: 850px) {
-    header {
-        padding: 18px 25px;
-    }
-
-    header nav {
-        display: none; /* Hides nav for now, can add mobile menu later */
-    }
-}
+        .hero p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: #b9cde5;
+        }
 
         /* SECTION TITLES */
         .section-title {
@@ -221,6 +231,15 @@ body { background:#0A0F1F; color:#fff; scroll-behavior:smooth; }
     <button class="hamburger" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
   </div>
 </header>
+
+    <!-- HERO -->
+    <section class="hero" data-aos="fade-up">
+        <h1>DevOps Services</h1>
+        <p>
+            Accelerate innovation with streamlined development, automated infrastructure,
+            continuous integration, and faster deployment cycles—built for modern businesses.
+        </p>
+    </section>
 
     <!-- OUR OFFERINGS -->
     <h2 class="section-title" data-aos="fade-up">Our Offerings</h2>
