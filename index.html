@@ -1,0 +1,864 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>Step2Dev — Cloud, DevOps & SRE Engineering</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<!-- FontAwesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:"Inter",sans-serif; }
+
+body { background:#0A0F1F; color:#fff; scroll-behavior:smooth; }
+
+.container { width:90%; max-width:1300px; margin:auto; }
+
+/* HEADER */
+.header {
+  width:100%;
+  position:fixed;
+  top:0; left:0;
+  backdrop-filter: blur(15px);
+  background: rgba(10,15,31,0.4);
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  z-index:1000;
+  padding:12px 0;
+}
+.header-inner {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.brand .logo {
+  font-size:1.7rem;
+  font-weight:700;
+  color:#4AB3FF;
+}
+.brand .tag {
+  font-size:0.85rem;
+  opacity:0.8;
+}
+
+/* NAV */
+.nav a {
+  color:#d9e6ff;
+  text-decoration:none;
+  margin:0 15px;
+  font-size:0.95rem;
+  transition:0.3s;
+}
+.nav a:hover { color:#4AB3FF; }
+
+.nav .cta-ghost {
+  padding:8px 18px;
+  border:1px solid #4AB3FF;
+  border-radius:6px;
+  transition:0.3s;
+}
+.nav .cta-ghost:hover {
+  background:#4AB3FF;
+  color:#fff;
+}
+
+/* HAMBURGER */
+.hamburger {
+  display:none;
+  font-size:1.5rem;
+  color:#fff;
+  background:none;
+  border:none;
+}
+
+/* HERO */
+.hero {
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding-top:90px;
+}
+.hero-visual {
+  position:absolute;
+  width:100%;
+  height:100%;
+  left:0; top:0;
+  background:radial-gradient(circle at top, rgba(60,120,255,0.25), rgba(10,15,31,0.95));
+  z-index:-1;
+}
+.hero-inner h1 {
+  font-size:3rem;
+  line-height:1.2;
+  max-width:700px;
+}
+.hero-inner p {
+  margin:20px 0;
+  font-size:1.1rem;
+  max-width:520px;
+  opacity:0.85;
+}
+
+.hero-kicker {
+  color:#4AB3FF;
+  font-weight:600;
+  margin-bottom:12px;
+  letter-spacing:0.5px;
+}
+
+.btn {
+  display:inline-block;
+  padding:12px 22px;
+  margin-right:10px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:600;
+}
+
+.btn-primary {
+  background:#4AB3FF;
+  color:#fff;
+}
+.btn-primary:hover { opacity:0.9; }
+
+.btn-outline {
+  border:1px solid #4AB3FF;
+  color:#4AB3FF;
+}
+.btn-outline:hover {
+  background:#4AB3FF;
+  color:#fff;
+}
+
+/* REVEAL ANIMATION */
+[data-reveal] {
+  opacity:0;
+  transform:translateY(30px);
+  transition:all 0.8s ease;
+}
+[data-reveal].active {
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ---------------------------
+   Additional site-wide styles (blue theme)
+   --------------------------- */
+.section {
+  padding:100px 0;
+}
+.section .container { padding:0 20px; }
+
+/* SERVICES */
+.services { background: linear-gradient(180deg, rgba(10,15,31,0.6), rgba(6,10,20,0.9)); }
+.services h2 { color:#e6f5ff; font-size:2.4rem; margin-bottom:30px; }
+.service-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:24px;
+}
+.service-card {
+  background: linear-gradient(180deg, rgba(20,30,50,0.5), rgba(6,10,20,0.35));
+  border:1px solid rgba(74,179,255,0.06);
+  padding:26px;
+  border-radius:14px;
+  transition: transform .35s, box-shadow .35s;
+}
+.service-card:hover {
+  transform:translateY(-8px);
+  box-shadow:0 10px 40px rgba(74,179,255,0.06);
+}
+.service-card h3 { color:#cfeeff; margin-bottom:10px; font-size:1.05rem; }
+.service-card p { color:#bcdff8; font-size:0.95rem; }
+
+/* WHY CHOOSE */
+.why-choose { background:transparent; }
+.why-choose h2 { color:#e6f5ff; font-size:2.2rem; margin-bottom:30px; }
+.features-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+}
+.feature-card {
+  background: linear-gradient(180deg, rgba(12,18,30,0.6), rgba(8,12,20,0.35));
+  padding:22px;
+  border-radius:12px;
+  border:1px solid rgba(74,179,255,0.05);
+  text-align:center;
+  transition:transform .3s;
+}
+.feature-card:hover { transform:translateY(-6px); }
+.feature-card h3 { color:#cfeeff; margin-bottom:8px; }
+.feature-card p { color:#bcdff8; font-size:0.95rem; }
+.feature-card .stat { font-size:2rem; color:#4AB3FF; margin-top:12px; font-weight:700; }
+
+/* PROJECTS */
+.projects { background: linear-gradient(180deg, rgba(6,10,20,0.9), rgba(3,6,12,0.95)); }
+.project-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:24px;
+}
+.project-card {
+  background:linear-gradient(180deg, rgba(12,18,30,0.6), rgba(6,10,20,0.35));
+  border-radius:12px;
+  overflow:hidden;
+  position:relative;
+  border:1px solid rgba(74,179,255,0.05);
+}
+.project-card img { width:100%; height:180px; object-fit:cover; display:block; }
+.project-card .project-body { padding:16px; }
+.overlay {
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  background:linear-gradient(180deg, rgba(10,15,25,0.6), rgba(10,15,25,0.9));
+  opacity:0; transition:opacity .35s;
+}
+.project-card:hover .overlay { opacity:1; }
+
+/* TECHNOLOGIES MARQUEE */
+.tech-marquee {
+    width:100%;
+    overflow:hidden;
+    margin-top:20px;
+    padding:10px 0;
+}
+.tech-track {
+    display:flex;
+    gap:60px;
+    animation:scrollTech 18s linear infinite;
+    align-items:center;
+}
+.tech-track img { height:48px; opacity:0.9; filter:drop-shadow(0 0 6px rgba(0,0,0,0.6)); }
+@keyframes scrollTech {
+    0% {transform:translateX(0);}
+    100% {transform:translateX(-50%);}
+}
+
+/* ABOUT */
+.about { background:transparent; }
+.about-container { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:32px; align-items:center; }
+.about img { width:100%; border-radius:12px; box-shadow:0 10px 40px rgba(74,179,255,0.04); transform:rotate(-1deg); }
+
+/* PRICING */
+.pricing-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
+    margin-top:30px;
+}
+.plan {
+    background:linear-gradient(180deg, rgba(12,18,30,0.6), rgba(6,10,20,0.35));
+    padding:22px;
+    border-radius:12px;
+    border:1px solid rgba(74,179,255,0.05);
+}
+.plan-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
+.plan-price { color:#4AB3FF; font-weight:800; font-size:1.3rem; }
+
+/* CONTACT & FORM */
+.contact { background: linear-gradient(180deg, rgba(6,10,20,0.9), rgba(3,6,12,0.95)); }
+.contact form { max-width:560px; margin:20px auto 0; display:flex; flex-direction:column; gap:12px; }
+.contact input, .contact textarea {
+    background: rgba(12,16,22,0.6);
+    border:1px solid rgba(74,179,255,0.06);
+    padding:14px 16px;
+    border-radius:10px;
+    color:#e6f5ff;
+}
+
+/* FOOTER */
+footer { background:rgba(3,6,12,0.95); padding:30px 0; text-align:center; border-top:1px solid rgba(255,255,255,0.03); color:#9fbfe6; }
+footer a { color:#4AB3FF; margin:0 8px; }
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .header-inner { padding:0 12px; }
+  .nav a { margin:0 8px; font-size:0.9rem; }
+  .hero-inner h1 { font-size:2.1rem; }
+  .hero-inner p { font-size:1rem; }
+  .hamburger { display:block; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header" role="banner">
+  <div class="header-inner container">
+    <div class="brand">
+      <div class="logo" aria-hidden="false">Step2Dev</div>
+      <div class="tag" aria-hidden="true">Cloud • DevOps • SRE</div>
+    </div>
+
+    <nav class="nav" role="navigation" aria-label="Main Navigation">
+      <a href="#hero">Home</a>
+      <a href="#services">Services</a>
+      <a href="about.html" target="_blank">About</a>
+      <a href="case.html">Case Studies</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+      <a class="cta-ghost" href="#contact">Book a Call</a>
+    </nav>
+
+    <button class="hamburger" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="hero" class="hero">
+  <div class="hero-visual"></div>
+
+  <div class="hero-inner container">
+    <div class="reveal" data-reveal>
+      <div class="hero-kicker">Enterprise-grade Cloud & DevOps</div>
+
+      <h1>We build resilient, cost-efficient cloud platforms that power global teams.</h1>
+
+      <p>Zero-downtime migrations • Kubernetes & GitOps • 24/7 SRE • Real cost reduction.</p>
+
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#contact"><i class="fa-solid fa-rocket"></i> Get a Free Audit</a>
+        <a class="btn btn-outline" href="#services"><i class="fa-solid fa-list-check"></i> Explore Services</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+     New Sections (blue-styled, from "second" site)
+     ========================= -->
+
+<!-- SERVICES -->
+<section id="services" class="section services">
+  <div class="container">
+    <h2 data-reveal>Our Services</h2>
+
+    <div class="service-grid">
+      <div class="service-card" data-reveal>
+        <h3><i class="fa-solid fa-cloud" style="margin-right:8px;color:#4AB3FF;"></i> Cloud Infrastructure</h3>
+        <p>Design, build and operate resilient cloud platforms on AWS, GCP and Azure with IaC and best practices.</p>
+      </div>
+
+      <div class="service-card" data-reveal>
+        <h3><i class="fa-solid fa-coins" style="margin-right:8px;color:#4AB3FF;"></i> Cost Optimization</h3>
+        <p>Find waste, right-size resources and automate cost control to reduce monthly spend without risk.</p>
+      </div>
+
+      <div class="service-card" data-reveal>
+        <h3><i class="fa-solid fa-gears" style="margin-right:8px;color:#4AB3FF;"></i> CI/CD Automation</h3>
+        <p>Build repeatable pipelines with GitOps, automated testing and safe progressive rollouts.</p>
+      </div>
+
+      <div class="service-card" data-reveal>
+        <h3><i class="fa-solid fa-gears" style="margin-right:8px;color:#4AB3FF;"></i> Database Setup</h3>
+        <p>Reliable, secure and scalable database solutions — including design, deployment, optimization, backups and cloud-managed databases..</p>
+      </div>
+
+      <div class="service-card" data-reveal>
+        <h3><i class="fa-solid fa-gears" style="margin-right:8px;color:#4AB3FF;"></i> High Availability & Scaling</h3>
+        <p>Architect auto-scaling, fault-tolerant, multi-zone and load-balanced systems for maximum uptime and reliable performance..</p>
+      </div>
+
+      <div class="service-card" data-reveal>
+        <h3><i class="fa-solid fa-gears" style="margin-right:8px;color:#4AB3FF;"></i> Performance Optimization</h3>
+        <p>Improve application, server, and database speed using caching, CDN, load testing, code profiling, and capacity planning..</p>
+      </div>
+
+      <div class="service-card" data-reveal>
+        <h3><i class="fa-solid fa-shield-halved" style="margin-right:8px;color:#4AB3FF;"></i> Security & Monitoring</h3>
+        <p>Implement observability with Prometheus, Grafana and logging with actionable alerting.</p>
+      </div>
+
+      <div class="service-card" data-reveal>
+        <h3><i class="fa-solid fa-arrows-up-down" style="margin-right:8px;color:#4AB3FF;"></i> Cloud Migration</h3>
+        <p>Zero-downtime migrations, lift-and-shift, and re-platforming with a safety-first approach.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section id="why" class="section why-choose">
+  <div class="container">
+    <h2 data-reveal>Why Choose Step2Dev</h2>
+
+    <div class="features-grid">
+      <div class="feature-card" data-reveal>
+        <h3>Affordable Solutions</h3>
+        <p>Professional Cloud & DevOps at prices startups can afford.</p>
+        <div class="stat" id="stat1">0</div>
+      </div>
+
+      <div class="feature-card" data-reveal>
+        <h3>Cost Savings</h3>
+        <p>Data-driven optimization to lower TCO and improve performance.</p>
+        <div class="stat" id="stat2">0</div>
+      </div>
+
+      <div class="feature-card" data-reveal>
+        <h3>Fast Delivery</h3>
+        <p>Iterative delivery with well-defined SLAs and automation.</p>
+        <div class="stat" id="stat3">0</div>
+      </div>
+
+      <div class="feature-card" data-reveal>
+        <h3>24/7 Support</h3>
+        <p>On-call SRE, incident response and proactive monitoring.</p>
+        <div class="stat" id="stat4">0</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section projects">
+  <div class="container">
+    <h2 data-reveal>Selected Case Studies</h2>
+
+    <div class="project-grid">
+      <div class="project-card" data-reveal>
+        <img src="https://images.ctfassets.net/0d3i1kfsuaq3/1Gsp9QDiw67hyp3uPZXJGD/fb3450a78232bcb3d4204ab4233e1e92/Hero_CRM_Migration.jpg" alt="Cloud Migration">
+        <div class="project-body">
+          <h4>Global E-commerce Migration</h4>
+          <p>Migrated a high-traffic store to a multi-AZ AWS setup with zero downtime.</p>
+        </div>
+        <div class="overlay">
+          <div>
+            <h4>Migrated with zero downtime</h4>
+            <p>Autoscaling, multi-AZ and reduced costs by 38%.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card" data-reveal>
+        <img src="https://img.freepik.com/free-vector/devops-team-abstract-concept-vector-illustration-software-development-team-member-agile-workflow-devops-team-model-it-teamwork-project-management-integrated-practice-abstract-metaphor_335657-2299.jpg?semt=ais_hybrid&w=740&q=80" alt="CI/CD">
+        <div class="project-body">
+          <h4>CI/CD Platform</h4>
+          <p>Built GitOps pipelines enabling safe daily deployments.</p>
+        </div>
+        <div class="overlay">
+          <div>
+            <h4>CI/CD at scale</h4>
+            <p>Automated tests and progressive rollouts.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card" data-reveal>
+        <img src="https://img.freepik.com/free-vector/cost-optimization-concept-idea-financial-marketing-strategy-cost-income-balance-spending-cost-reduction-while-maximizing-business-value-isolated-flat-illustration-vector_613284-2631.jpg?semt=ais_hybrid&w=740&q=80" alt="Cost Optimization">
+        <div class="project-body">
+          <h4>Cost Optimization</h4>
+          <p>Reduced infra spend by 40% using autoscaling & right-sizing.</p>
+        </div>
+        <div class="overlay">
+          <div>
+            <h4>40% cost reduction</h4>
+            <p>Without compromising reliability.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNOLOGIES -->
+<section id="technologies" class="section" style="background:linear-gradient(180deg, rgba(6,10,20,0.95), rgba(3,6,12,0.97)); padding:80px 20px;">
+  <div class="container" style="text-align:center;">
+    <h2 style="color:#4AB3FF; font-size:2.5rem; margin-bottom:20px;">We Work With Industry-Leading Technologies</h2>
+    <p style="max-width:760px; margin:0 auto 50px; color:#bcdff8; font-size:1.1rem;">
+      AWS, Kubernetes, Terraform, Docker, Ansible, Puppet, Prometheus, Grafana — production-ready, secure, automated and scalable.
+    </p>
+
+    <div class="tech-marquee" style="overflow:hidden; white-space:nowrap;">
+      <div class="tech-track" style="display:inline-block; animation:scroll 30s linear infinite;">
+        <!-- Logos -->
+        <img src="https://cdn.worldvectorlogo.com/logos/aws-2.svg" alt="AWS" class="tech-logo">
+        <img src="https://cdn.worldvectorlogo.com/logos/kubernets.svg" class="tech-logo">
+        <img src="https://cdn.worldvectorlogo.com/logos/docker.svg" alt="Docker" class="tech-logo">
+        <img src="https://cdn.worldvectorlogo.com/logos/ansible.svg" alt="Ansible" class="tech-logo">
+        <img src="https://cdn.worldvectorlogo.com/logos/puppet.svg" alt="Puppet" class="tech-logo">
+        <img src="https://cdn.worldvectorlogo.com/logos/prometheus.svg" alt="Prometheus" class="tech-logo">
+        <img src="https://cdn.worldvectorlogo.com/logos/grafana.svg" alt="Grafana" class="tech-logo">
+
+        <!-- duplicate for seamless scroll -->
+        <img src="https://cdn.worldvectorlogo.com/logos/aws-2.svg" alt="AWS" class="tech-logo">
+        <img src="https://cdn.worldvectorlogo.com/logos/kubernets.svg" alt="Kubernets" class="tech-logo">
+        <img src="https://cdn.worldvectorlogo.com/logos/docker.svg" alt="Docker" class="tech-logo">
+        <img src="https://cdn.worldvectorlogo.com/logos/ansible.svg" alt="Ansible" class="tech-logo">
+        <img src="https://cdn.worldvectorlogo.com/logos/puppet.svg" alt="Puppet" class="tech-logo">
+        <img src="https://cdn.worldvectorlogo.com/logos/prometheus.svg" alt="Prometheus" class="tech-logo">
+        <img src="https://cdn.worldvectorlogo.com/logos/grafana.svg" alt="Grafana" class="tech-logo">
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .tech-logo {
+    width:120px;                /* Bigger logos */
+    margin:0 40px;
+    transition: transform 0.4s, filter 0.4s;
+    display:inline-block;
+    filter: drop-shadow(0 0 5px rgba(74,179,255,0.7));
+  }
+
+  .tech-logo:hover {
+    transform: scale(1.3) rotate(-5deg);
+    filter: drop-shadow(0 0 15px rgba(74,179,255,1));
+  }
+
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* Optional: responsive adjustments */
+  @media(max-width:768px){
+    .tech-logo {
+      width:80px;
+      margin:0 20px;
+    }
+  }
+</style>
+
+<!-- ABOUT SECTION -->
+<section id="about" style="font-family: 'Inter', sans-serif; background-color: #0f1a2b; padding: 100px 20px; color: #cde9ff;">
+  <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 50px;">
+
+    <!-- Image -->
+    <div style="flex:1 1 500px; text-align: center;">
+      <img src="https://images.unsplash.com/photo-1593642532973-d31b6557fa68?fit=crop&w=900&q=80" alt="Team working on cloud" style="width: 100%; max-width: 500px; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.3);">
+    </div>
+
+    <!-- Text Content -->
+    <div style="flex:1 1 500px;">
+      <h2 style="color:#4AB3FF; font-size: 38px; font-weight: 700; margin-bottom: 25px;">About Step2Dev</h2>
+
+      <p style="line-height:1.8; margin-bottom:15px;">
+        Step2Dev is a premier Cloud, DevOps, and SRE solutions provider, helping businesses scale, automate, and innovate with confidence. We specialize in building resilient cloud infrastructure, implementing cost-effective strategies, and delivering seamless automation solutions that empower organizations to focus on growth.
+      </p>
+
+      <p style="line-height:1.8; margin-bottom:15px;">
+        Founded by <strong style="color:#4AB3FF;">Yash Kumar</strong>, a passionate Cloud and DevOps expert, Step2Dev combines industry best practices with cutting-edge technologies to provide reliable, secure, and scalable solutions for startups, enterprises, and SaaS businesses alike. From cloud migrations and CI/CD pipelines to database management and monitoring, Step2Dev ensures your systems are optimized for performance, security, and efficiency.
+      </p>
+
+      <p style="line-height:1.8; margin-bottom:25px;">
+        Our mission is to help companies save costs, streamline operations, and unlock their full potential in the digital era. Whether you want to modernize your infrastructure, implement automation, or build a robust cloud-native application, Step2Dev is your trusted partner for success.
+      </p>
+
+      <!-- Feature Badges -->
+      <div style="display:flex; flex-wrap: wrap; gap:12px; margin-bottom:20px;">
+        <div style="padding:10px 16px; border-radius:10px; background: rgba(74,179,255,0.12); color:#dff4ff; font-weight:600;">Innovation</div>
+        <div style="padding:10px 16px; border-radius:10px; background: rgba(46,123,224,0.12); color:#dff4ff; font-weight:600;">Expertise</div>
+        <div style="padding:10px 16px; border-radius:10px; background: rgba(74,179,255,0.12); color:#dff4ff; font-weight:600;">Reliability</div>
+        <div style="padding:10px 16px; border-radius:10px; background: rgba(46,123,224,0.12); color:#dff4ff; font-weight:600;">Growth</div>
+      </div>
+
+      <!-- Founder Info -->
+      <div style="font-size:16px; color:#bcdff8;">Founder: <span style="color:#4AB3FF; font-weight:700;">Yash Kumar</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="section" style="background:linear-gradient(180deg, rgba(6,10,20,0.95), rgba(3,6,12,0.96)); padding:80px 20px;">
+  <div class="container" style="text-align:center; max-width:1200px; margin:auto;">
+    <h2 data-reveal style="color:#e6f5ff; font-size:2.5rem; margin-bottom:16px;">Plans for Every Stage</h2>
+    <p data-reveal style="color:#bcdff8; max-width:760px; margin:0 auto 40px; font-size:1rem;">Customized Cloud & DevOps solutions that fit your exact requirements — with transparent, flexible pricing. You pay only for what you need while getting enterprise-level performance at startup-friendly rates..</p>
+
+    <div class="pricing-grid" data-reveal style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center;">
+
+      <!-- Starter Plan -->
+      <div class="plan" style="background:#0a1a2b; padding:30px; border-radius:16px; flex:1 1 280px; max-width:300px; box-shadow:0 10px 30px rgba(0,0,0,0.4);">
+        <div class="plan-header">
+          <h3 style="color:#4AB3FF; font-size:1.5rem; margin-bottom:10px;">Starter</h3>
+          <div class="plan-price" style="color:#fff; font-size:1.8rem; font-weight:700;">$50</div>
+        </div>
+        <ul style="color:#bcdff8; text-align:left; margin-top:15px; line-height:1.6;">
+          <li>Cloud audit & roadmap</li>
+          <li>1-week Proof of Concept (PoC)</li>
+          <li>Email support</li>
+        </ul>
+        <button class="btn btn-primary" style="width:100%; margin-top:20px;">Choose Starter</button>
+      </div>
+
+      <!-- Scale Plan -->
+      <div class="plan" style="background:#0a1a2b; padding:30px; border-radius:16px; flex:1 1 280px; max-width:300px; box-shadow:0 10px 30px rgba(0,0,0,0.4);">
+        <div class="plan-header">
+          <h3 style="color:#4AB3FF; font-size:1.5rem; margin-bottom:10px;">Scale</h3>
+          <div class="plan-price" style="color:#fff; font-size:1.8rem; font-weight:700;">$300</div>
+        </div>
+        <ul style="color:#bcdff8; text-align:left; margin-top:15px; line-height:1.6;">
+          <li>Full migration to cloud</li>
+          <li>CI/CD & Infrastructure as Code (IaC)</li>
+          <li>2-week support</li>
+        </ul>
+        <button class="btn btn-primary" style="width:100%; margin-top:20px;">Choose Scale</button>
+      </div>
+
+      <!-- Enterprise Plan -->
+      <div class="plan" style="background:#0a1a2b; padding:30px; border-radius:16px; flex:1 1 280px; max-width:300px; box-shadow:0 10px 30px rgba(0,0,0,0.4);">
+        <div class="plan-header">
+          <h3 style="color:#4AB3FF; font-size:1.5rem; margin-bottom:10px;">Enterprise</h3>
+          <div class="plan-price" style="color:#fff; font-size:1.8rem; font-weight:700;">Custom</div>
+        </div>
+        <ul style="color:#bcdff8; text-align:left; margin-top:15px; line-height:1.6;">
+          <li>Dedicated SRE</li>
+          <li>24/7 monitoring & support</li>
+          <li>Hybrid On-prem + Cloud</li>
+        </ul>
+        <button class="btn btn-outline" style="width:100%; margin-top:20px;">Contact Sales</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section id="faq" style="background:#0f1a2b; padding:80px 20px; font-family:'Inter', sans-serif; color:#cde9ff;">
+  <div class="container" style="max-width:900px; margin:auto; text-align:center;">
+    <h2 style="color:#4AB3FF; font-size:2.5rem; margin-bottom:20px;">Frequently Asked Questions</h2>
+    <p style="color:#bcdff8; font-size:1rem; margin-bottom:50px;">Answers to common questions about our Cloud, DevOps, and SRE solutions.</p>
+
+    <div class="faq-item" style="text-align:left; margin-bottom:15px; border-radius:12px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.4);">
+      <button class="faq-question" style="width:100%; padding:18px 20px; background:#0a1a2b; color:#e6f5ff; font-size:1.1rem; font-weight:600; border:none; cursor:pointer; text-align:left; transition: background 0.3s;">
+        How much does Step2Dev services cost for a small company?
+      </button>
+      <div class="faq-answer" style="max-height:0; overflow:hidden; transition:max-height 0.5s ease, padding 0.5s ease; background:#061020; padding:0 20px; color:#bcdff8;">
+        <p style="margin:15px 0;">Our Starter plan starts at ₹9,999, designed for startups and small companies. Scale and Enterprise plans are available for larger infrastructures.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" style="text-align:left; margin-bottom:15px; border-radius:12px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.4);">
+      <button class="faq-question" style="width:100%; padding:18px 20px; background:#0a1a2b; color:#e6f5ff; font-size:1.1rem; font-weight:600; border:none; cursor:pointer; text-align:left; transition: background 0.3s;">
+        What services are included in the Scale plan?
+      </button>
+      <div class="faq-answer" style="max-height:0; overflow:hidden; transition:max-height 0.5s ease, padding 0.5s ease; background:#061020; padding:0 20px; color:#bcdff8;">
+        <p style="margin:15px 0;">The Scale plan includes full cloud migration, CI/CD pipelines, Infrastructure as Code (IaC), and 2-week support to ensure a smooth transition.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" style="text-align:left; margin-bottom:15px; border-radius:12px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.4);">
+      <button class="faq-question" style="width:100%; padding:18px 20px; background:#0a1a2b; color:#e6f5ff; font-size:1.1rem; font-weight:600; border:none; cursor:pointer; text-align:left; transition: background 0.3s;">
+        Do you provide ongoing support after migration?
+      </button>
+      <div class="faq-answer" style="max-height:0; overflow:hidden; transition:max-height 0.5s ease, padding 0.5s ease; background:#061020; padding:0 20px; color:#bcdff8;">
+        <p style="margin:15px 0;">Yes! We offer ongoing support plans to monitor, optimize, and maintain your cloud infrastructure and DevOps pipelines.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ JS -->
+<script>
+  const faqButtons = document.querySelectorAll('.faq-question');
+
+  faqButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const answer = button.nextElementSibling;
+
+      // Close all other answers
+      faqButtons.forEach(btn => {
+        if(btn !== button){
+          btn.nextElementSibling.style.maxHeight = null;
+          btn.nextElementSibling.style.paddingTop = "0";
+          btn.nextElementSibling.style.paddingBottom = "0";
+        }
+      });
+
+      // Toggle current answer
+      if(answer.style.maxHeight){
+        answer.style.maxHeight = null;
+        answer.style.paddingTop = "0";
+        answer.style.paddingBottom = "0";
+      } else {
+        answer.style.maxHeight = answer.scrollHeight + "px";
+        answer.style.paddingTop = "15px";
+        answer.style.paddingBottom = "15px";
+      }
+    });
+  });
+
+  // Fade-in animation on scroll
+  const faqItems = document.querySelectorAll('.faq-item');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.style.transform = "translateY(0)";
+        entry.target.style.opacity = "1";
+      }
+    });
+  }, { threshold: 0.1 });
+
+  faqItems.forEach(item => {
+    item.style.transform = "translateY(20px)";
+    item.style.opacity = "0";
+    item.style.transition = "all 0.6s ease-out";
+    observer.observe(item);
+  });
+</script>
+
+
+<!-- CONTACT -->
+<section id="contact" class="section contact" style="background:#0f1a2b; padding:80px 20px; font-family:'Inter', sans-serif; color:#cde9ff;">
+  <div class="container" style="max-width:800px; margin:auto; text-align:center;">
+    <h2 style="color:#4AB3FF; font-size:2.5rem; margin-bottom:20px;">Get in Touch</h2>
+    <p style="color:#bcdff8; font-size:1rem; margin-bottom:40px;">Tell us about your project and we’ll propose a practical roadmap.</p>
+
+    <form action="https://formsubmit.co/ashh.automation@gmail.com" method="POST" style="display:flex; flex-direction:column; gap:15px;">
+      <input type="text" name="name" placeholder="Name" required style="padding:14px 16px; border-radius:8px; border:none; background:#061020; color:#e6f5ff;">
+      <input type="email" name="email" placeholder="Email" required style="padding:14px 16px; border-radius:8px; border:none; background:#061020; color:#e6f5ff;">
+      <textarea name="message" rows="5" placeholder="Message" required style="padding:14px 16px; border-radius:8px; border:none; background:#061020; color:#e6f5ff;"></textarea>
+
+      <!-- Optional: Redirect to thank you page after submission -->
+      <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
+      <!-- Optional: Disable captcha -->
+      <input type="hidden" name="_captcha" value="false">
+
+      <button type="submit" class="btn btn-primary" style="padding:14px; border-radius:8px; border:none; background:#4AB3FF; color:#0f1a2b; font-weight:600; cursor:pointer; transition:all 0.3s;">Send Message</button>
+    </form>
+
+    <p style="color:#4AB3FF; margin-top:12px; font-size:0.95rem;">You will receive a confirmation email once submitted.</p>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer style="background:#060a14; padding:60px 20px; color:#bcdff8;">
+  <div class="container" style="max-width:1200px; margin:auto; display:flex; flex-wrap:wrap; gap:40px; justify-content:space-between;">
+
+    <!-- Newsletter -->
+    <div style="flex:1 1 250px;">
+      <h3 style="color:#4AB3FF; margin-bottom:15px;">Subscribe To Our Newsletter</h3>
+      <p style="margin-bottom:15px;">Get the latest updates on Cloud, DevOps & SRE.</p>
+      <form style="display:flex; gap:10px;">
+        <input type="email" placeholder="Enter your email" 
+          style="padding:10px; flex:1; border-radius:8px; border:none; outline:none;">
+        <button style="padding:10px 20px; border:none; background:#4AB3FF; color:#fff; border-radius:8px; cursor:pointer;">
+          Subscribe
+        </button>
+      </form>
+    </div>
+
+    <!-- Quick Links -->
+    <div style="flex:1 1 150px;">
+      <h3 style="color:#4AB3FF; margin-bottom:15px;">Quick Links</h3>
+      <ul style="list-style:none; padding:0; line-height:1.9;">
+        <li><a href="about.html" style="color:#bcdff8; text-decoration:none;">About Us</a></li>
+        <li><a href="blog.html" style="color:#bcdff8; text-decoration:none;">Blog</a></li>
+        <li><a href="#contact" style="color:#bcdff8; text-decoration:none;">Contact Us</a></li>
+        <li><a href="case.html" style="color:#bcdff8; text-decoration:none;">Case Studies</a></li>
+        <li><a href="#services" style="color:#bcdff8; text-decoration:none;">Services</a></li>
+      </ul>
+    </div>
+
+    <!-- Services -->
+    <div style="flex:1 1 180px;">
+      <h3 style="color:#4AB3FF; margin-bottom:15px;">Services</h3>
+      <ul style="list-style:none; padding:0; line-height:1.9;">
+        <li><a href="cloud.html" style="color:#bcdff8; text-decoration:none;">Cloud Solutions</a></li>
+        <li><a href="devops.html" style="color:#bcdff8; text-decoration:none;">DevOps Services</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div style="flex:1 1 220px;">
+      <h3 style="color:#4AB3FF; margin-bottom:15px;">Contact Details</h3>
+      <p style="margin-bottom:10px;">6-E, Shahdra, Delhi, India</p>
+      <p><a href="mailto:hello@step2dev.com" style="color:#bcdff8; text-decoration:none;">hello@step2dev.com</a></p>
+      <p><a href="tel:+919716006371" style="color:#bcdff8; text-decoration:none;">+91-9716006371</a></p>
+    </div>
+
+  </div>
+
+  <hr style="border-color:rgba(255,255,255,0.1); margin:40px auto; max-width:1200px;">
+
+  <!-- Bottom -->
+  <div style="text-align:center; color:#779fbd;">
+    © 2025 Step2Dev, All rights reserved. 
+    <br>
+    <a href="privacy.html" style="color:#4AB3FF; text-decoration:none; margin-right:10px;">Privacy Policy</a>
+    |
+    <a href="terms.html" style="color:#4AB3FF; text-decoration:none; margin-left:10px;">Terms & Conditions</a>
+  </div>
+</footer>
+<!-- =========================
+     JS: reveal + counters + small interactions
+     ========================= -->
+<script>
+// Keep your original reveal logic intact
+const reveals = document.querySelectorAll("[data-reveal]");
+const revealOnScroll = () => {
+  reveals.forEach(el => {
+    const rect = el.getBoundingClientRect().top;
+    if (rect < window.innerHeight - 100) el.classList.add("active");
+  });
+};
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
+
+// Counter Animation (will run when #why enters view)
+function animateValue(id, start, end, duration){
+    let obj=document.getElementById(id);
+    if(!obj) return;
+    let current=start;
+    let range=end-start;
+    if(range === 0){ obj.textContent = end; return; }
+    let increment=end>start?1:-1;
+    let step=Math.abs(Math.floor(duration/range));
+    step = step < 20 ? 20 : step; // avoid too fast intervals
+    let timer=setInterval(()=>{
+        current+=increment;
+        obj.textContent=current;
+        if(current==end) clearInterval(timer);
+    },step);
+}
+
+window.addEventListener("scroll",()=>{
+    let section=document.getElementById("why");
+    if(!section) return;
+    let rect=section.getBoundingClientRect();
+
+    if(rect.top < window.innerHeight - 150 && !section.classList.contains("counted")){
+        section.classList.add("counted");
+        animateValue("stat1",0,120,1600);
+        animateValue("stat2",0,85,1600);
+        animateValue("stat3",0,95,1600);
+        animateValue("stat4",0,24,1600);
+    }
+});
+
+// Mobile hamburger toggle (simple)
+const burger = document.querySelector('.hamburger');
+const nav = document.querySelector('.nav');
+if(burger){
+  burger.addEventListener('click', ()=>{
+    nav.classList.toggle('open');
+    if(nav.classList.contains('open')){
+      nav.style.display = 'block';
+      nav.style.position = 'absolute';
+      nav.style.right = '20px';
+      nav.style.top = '64px';
+      nav.style.background = 'rgba(10,15,31,0.9)';
+      nav.style.padding = '10px 18px';
+      nav.style.borderRadius = '8px';
+    } else {
+      nav.style.display = '';
+      nav.style.position = '';
+      nav.style.background = '';
+      nav.style.padding = '';
+      nav.style.borderRadius = '';
+    }
+  });
+}
+</script>
+
+</body>
+</html>
