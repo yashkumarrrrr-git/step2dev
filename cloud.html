@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cloud Solutions – Step2Dev</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<!-- FontAwesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(180deg, #060a14, #0b152b);
+        color: #e6f0ff;
+        overflow-x: hidden;
+    }
+
+    /* HEADER */
+    header {
+        width: 100%;
+        padding: 20px 8%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        background: rgba(10, 15, 31, 0.35);
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        backdrop-filter: blur(15px);
+    }
+
+    header a {
+        color: #d6e6ff;
+        margin-left: 22px;
+        text-decoration: none;
+        transition: .3s;
+    }
+    header a:hover {
+        color: #4da3ff;
+    }
+
+    /* HERO */
+    .hero {
+        padding-top: 150px;
+        padding-bottom: 80px;
+        text-align: center;
+    }
+    .hero h1 {
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 10px;
+        color: #ffffff;
+    }
+    .hero p {
+        max-width: 650px;
+        margin: auto;
+        font-size: 1.1rem;
+        color: #c9d8f9;
+    }
+
+    /* SECTION TITLE */
+    .section-title {
+        text-align: center;
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin-bottom: 40px;
+        color: #fff;
+    }
+
+    /* GRID */
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+        gap: 30px;
+        padding: 40px 8%;
+    }
+
+    /* CLOUD CARD */
+    .card {
+        padding: 30px;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 16px;
+        text-align: center;
+        transition: .4s;
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    .card.active {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    .card img {
+        width: 70px;
+        margin-bottom: 15px;
+    }
+    .card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+        color: #4aa8ff;
+    }
+    .card p {
+        color: #c7d9ff;
+        font-size: 0.95rem;
+    }
+    .card:hover {
+        background: rgba(255,255,255,0.07);
+        box-shadow: 0 0 20px rgba(77,163,255,0.2);
+        transform: translateY(-6px);
+    }
+
+    /* CTA BOX */
+    .cta {
+        text-align: center;
+        margin: 60px 0;
+        padding: 50px 8%;
+        background: rgba(255,255,255,0.03);
+        border-top: 1px solid rgba(255,255,255,0.07);
+        border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .cta h2 {
+        font-size: 2rem;
+        font-weight: 700;
+    }
+    .cta p {
+        max-width: 500px;
+        margin: auto;
+        margin-bottom: 25px;
+        color: #c7d8ff;
+    }
+    .cta a {
+        display: inline-block;
+        padding: 12px 30px;
+        background: #4da3ff;
+        color: #fff;
+        font-weight: 600;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: .3s;
+    }
+    .cta a:hover {
+        background: #2779d7;
+    }
+
+    /* FOOTER */
+    footer {
+        padding: 40px 8%;
+        margin-top: 60px;
+        background: rgba(255,255,255,0.03);
+        border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    footer p {
+        font-size: 0.9rem;
+        color: #b8c8e8;
+        text-align: center;
+    }
+
+    /* REVEAL ANIMATION */
+    [data-reveal] {
+        opacity: 0;
+        transform: translateY(35px);
+        transition: 1s ease;
+    }
+    [data-reveal].active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <h2 style="color:white; font-weight:700;">Step2Dev</h2>
+    <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="cloud.html">Cloud</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" data-reveal>
+    <h1>Powerful & Scalable Cloud Solutions</h1>
+    <p>We help businesses build secure, scalable, cost-efficient cloud setups using modern technologies and industry-leading cloud platforms.</p>
+</section>
+
+<!-- CLOUD GRID -->
+<h2 class="section-title" data-reveal>Our Cloud Offerings</h2>
+
+<div class="grid">
+
+    <div class="card" data-reveal>
+        <img src="images/aws.svg" alt="AWS">
+        <h3>AWS</h3>
+        <p>Enterprise-grade cloud platform trusted by global companies for high-scale workloads.</p>
+    </div>
+
+    <div class="card" data-reveal>
+        <img src="images/azure.svg" alt="Azure">
+        <h3>Microsoft Azure</h3>
+        <p>Perfect for hybrid cloud, enterprise apps, and integrated Microsoft solutions.</p>
+    </div>
+
+    <div class="card" data-reveal>
+        <img src="images/gcp.svg" alt="GCP">
+        <h3>Google Cloud</h3>
+        <p>Best-in-class A.I., ML, data analytics & modern infrastructure performance.</p>
+    </div>
+
+    <div class="card" data-reveal>
+        <img src="images/digitalocean.svg" alt="DigitalOcean">
+        <h3>Digital Ocean</h3>
+        <p>Simple, affordable cloud hosting ideal for startups & mid-size projects.</p>
+    </div>
+
+</div>
+
+<!-- CTA -->
+<section class="cta" data-reveal>
+    <h2>Need a Custom Cloud Setup?</h2>
+    <p>Whether you're migrating, optimizing costs, or building scalable systems — our team can help you choose the perfect cloud architecture.</p>
+    <a href="contact.html">Contact Us</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2025 Step2Dev — All Rights Reserved</p>
+</footer>
+
+<!-- SCROLL REVEAL SCRIPT -->
+<script>
+const revealElements = document.querySelectorAll("[data-reveal]");
+
+const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("active");
+        }
+    });
+},{
+    threshold: 0.18
+});
+
+revealElements.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
