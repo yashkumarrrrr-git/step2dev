@@ -11,6 +11,9 @@
 <!-- FontAwesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+<!-- AOS Animation Library -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+
 <style>
 /* RESET */
 * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter', sans-serif; }
@@ -20,9 +23,9 @@ body { background:#0A0F1F; color:#fff; scroll-behavior:smooth; }
 .container { max-width:1200px; margin:0 auto; padding:0 20px; }
 
 /* HEADER */
-.header { position:fixed; top:0; left:0; width:100%; backdrop-filter:blur(15px); background: rgba(10,15,31,0.5); border-bottom:1px solid rgba(255,255,255,0.05); z-index:1000; padding:12px 0; }
+.header { position:fixed; top:0; left:0; width:100%; backdrop-filter:blur(15px); background: rgba(10,15,31,0.85); border-bottom:1px solid rgba(255,255,255,0.05); z-index:1000; padding:12px 0; transition:0.3s; }
 .header-inner { display:flex; justify-content:space-between; align-items:center; }
-.brand .logo { font-size:1.8rem; font-weight:700; color:#4AB3FF; }
+.brand .logo { font-size:1.8rem; font-weight:700; color:#4AB3FF; transition:0.3s; }
 .brand .tag { font-size:0.85rem; opacity:0.8; }
 .nav a { margin:0 15px; font-weight:500; transition:0.3s; }
 .nav a:hover { color:#4AB3FF; }
@@ -31,9 +34,10 @@ body { background:#0A0F1F; color:#fff; scroll-behavior:smooth; }
 .hamburger { display:none; font-size:1.5rem; background:none; border:none; color:#fff; cursor:pointer; }
 
 /* HERO */
-.hero { padding-top:150px; padding-bottom:80px; text-align:center; }
-.hero h1 { font-size:3rem; font-weight:800; margin-bottom:15px; color:#4AB3FF; }
-.hero p { max-width:700px; margin:0 auto; font-size:1.15rem; color:#c9d8f9; line-height:1.7; }
+.hero { padding-top:160px; padding-bottom:120px; text-align:center; background:linear-gradient(135deg, #0a0f1f 0%, #141a2b 100%); position:relative; overflow:hidden; }
+.hero h1 { font-size:3rem; font-weight:800; margin-bottom:15px; color:#4AB3FF; animation:fadeInDown 1s ease forwards; opacity:0; }
+.hero p { max-width:700px; margin:0 auto; font-size:1.15rem; color:#c9d8f9; line-height:1.7; animation:fadeInUp 1.2s ease forwards; opacity:0; }
+.hero::before { content:""; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:rgba(74,179,255,0.05); transform:rotate(45deg); z-index:0; }
 
 /* SECTION TITLES */
 .section-title { font-size:2rem; font-weight:700; text-align:center; margin-bottom:40px; color:#fff; position:relative; }
@@ -44,16 +48,16 @@ body { background:#0A0F1F; color:#fff; scroll-behavior:smooth; }
 
 /* GRID CARDS */
 .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:30px; margin-bottom:60px; }
-.card { background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:30px; text-align:center; transition:0.4s; transform:translateY(20px); opacity:0; }
-.card.active { transform:translateY(0); opacity:1; }
+.card { background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:30px; text-align:center; transition:0.4s; cursor:pointer; }
 .card h3 { font-size:1.3rem; margin-bottom:10px; color:#4AB3FF; }
 .card p { font-size:0.95rem; color:#c9d8f9; }
-.card:hover { transform:translateY(-6px); box-shadow:0 10px 25px rgba(77,163,255,0.2); }
+.card:hover { transform:translateY(-10px) scale(1.05); box-shadow:0 15px 30px rgba(77,163,255,0.3); }
 
 /* FOUNDER SECTION */
-.founder { display:flex; gap:50px; align-items:center; flex-wrap:wrap; margin-bottom:60px; padding:40px 20px; background: rgba(255,255,255,0.02); border-radius:12px; }
-.founder-img { flex:1; min-width:250px; }
-.founder-img img { width:100%; border-radius:12px; border:2px solid #4AB3FF; }
+.founder { display:flex; gap:50px; align-items:center; flex-wrap:wrap; margin-bottom:60px; padding:40px 20px; background: rgba(255,255,255,0.02); border-radius:12px; transition:0.5s; }
+.founder-img { flex:1; min-width:250px; overflow:hidden; border-radius:12px; border:2px solid #4AB3FF; }
+.founder-img img { width:100%; border-radius:12px; transition:transform 0.5s; }
+.founder-img img:hover { transform:scale(1.05) rotate(1deg); }
 .founder-content { flex:2; min-width:250px; }
 .founder-content h3 { font-size:2rem; margin-bottom:20px; color:#4AB3FF; }
 .founder-content p { font-size:1rem; color:#c9d8f9; line-height:1.7; margin-bottom:10px; }
@@ -63,10 +67,10 @@ body { background:#0A0F1F; color:#fff; scroll-behavior:smooth; }
 .faq-item { background: rgba(255,255,255,0.05); border-radius:8px; padding:20px; margin-bottom:15px; cursor:pointer; transition:0.3s; }
 .faq-item:hover { background: rgba(255,255,255,0.08); }
 .faq-item h4 { color:#4AB3FF; font-size:1.1rem; }
-.faq-item p { display:none; margin-top:10px; color:#c9d8f9; }
+.faq-item p { display:none; margin-top:10px; color:#c9d8f9; line-height:1.6; }
 
 /* CTA */
-.cta { text-align:center; padding:60px 20px; background: rgba(255,255,255,0.03); border-radius:12px; margin-bottom:60px; }
+.cta { text-align:center; padding:60px 20px; background: rgba(255,255,255,0.03); border-radius:12px; margin-bottom:60px; animation:fadeInUp 1.5s ease forwards; opacity:0; }
 .cta h2 { font-size:2rem; color:#4AB3FF; margin-bottom:20px; }
 .cta p { font-size:1rem; color:#c9d8f9; margin-bottom:25px; }
 .cta a { display:inline-block; padding:12px 30px; background:#4AB3FF; color:#fff; font-weight:600; border-radius:8px; transition:0.3s; }
@@ -76,8 +80,14 @@ body { background:#0A0F1F; color:#fff; scroll-behavior:smooth; }
 footer { padding:40px 20px; text-align:center; border-top:1px solid rgba(255,255,255,0.07); color:#b8c8e8; }
 
 /* ANIMATION */
-[data-reveal] { opacity:0; transform:translateY(35px); transition:1s ease; }
-[data-reveal].active { opacity:1; transform:translateY(0); }
+@keyframes fadeInDown {
+  0% { opacity:0; transform:translateY(-30px); }
+  100% { opacity:1; transform:translateY(0); }
+}
+@keyframes fadeInUp {
+  0% { opacity:0; transform:translateY(30px); }
+  100% { opacity:1; transform:translateY(0); }
+}
 
 /* RESPONSIVE */
 @media(max-width:768px){ 
@@ -90,7 +100,7 @@ footer { padding:40px 20px; text-align:center; border-top:1px solid rgba(255,255
 <body>
 
 <!-- HEADER -->
-<header class="header">
+<header class="header" data-aos="fade-down">
   <div class="header-inner container">
     <div class="brand">
       <div class="logo">Step2Dev</div>
@@ -110,37 +120,37 @@ footer { padding:40px 20px; text-align:center; border-top:1px solid rgba(255,255
 </header>
 
 <!-- HERO -->
-<section class="hero" data-reveal>
-  <h1>About Step2Dev</h1>
-  <p>We empower businesses worldwide with scalable, secure, and innovative cloud infrastructure, DevOps, and SRE solutions. Our mission is to turn complex technology into growth and efficiency.</p>
+<section class="hero">
+  <h1 data-aos="fade-down" data-aos-delay="200">About Step2Dev</h1>
+  <p data-aos="fade-up" data-aos-delay="400">We empower businesses worldwide with scalable, secure, and innovative cloud infrastructure, DevOps, and SRE solutions. Our mission is to turn complex technology into growth and efficiency.</p>
 </section>
 
 <!-- WHO WE ARE -->
-<section data-reveal>
+<section data-aos="fade-up">
   <h2 class="section-title">Who We Are</h2>
   <p class="text-section">Step2Dev is a team of passionate cloud engineers, DevOps specialists, and SRE professionals. We deliver high-quality, secure, and scalable solutions for startups, enterprises, and global companies. Innovation, performance, and long-term client success are at our core.</p>
 </section>
 
 <!-- OUR MISSION -->
-<section data-reveal>
+<section data-aos="fade-up">
   <h2 class="section-title">Our Mission</h2>
   <p class="text-section">To provide businesses with reliable, efficient, and cost-effective cloud and DevOps solutions that enable growth, reduce complexity, and maximize technological potential. We aim to be a trusted partner for digital transformation journeys.</p>
 </section>
 
 <!-- WHAT WE DO -->
-<section data-reveal>
+<section data-aos="fade-up">
   <h2 class="section-title">What We Do</h2>
   <div class="grid">
-    <div class="card"><h3>Cloud Architecture</h3><p>Design scalable, secure, and cost-efficient cloud environments on AWS, Azure, GCP, and DigitalOcean.</p></div>
-    <div class="card"><h3>DevOps Automation</h3><p>Implement CI/CD pipelines, monitoring, and automated deployments for reliable operations.</p></div>
-    <div class="card"><h3>Site Reliability Engineering</h3><p>Ensure high availability, system reliability, and performance optimization for critical services.</p></div>
-    <div class="card"><h3>Cloud Cost Optimization</h3><p>Analyze cloud usage and reduce costs while maintaining performance and reliability.</p></div>
-    <div class="card"><h3>Security & Compliance</h3><p>Implement security best practices and compliance for enterprise systems.</p></div>
+    <div class="card" data-aos="zoom-in" data-aos-delay="100"><h3>Cloud Architecture</h3><p>Design scalable, secure, and cost-efficient cloud environments on AWS, Azure, GCP, and DigitalOcean.</p></div>
+    <div class="card" data-aos="zoom-in" data-aos-delay="200"><h3>DevOps Automation</h3><p>Implement CI/CD pipelines, monitoring, and automated deployments for reliable operations.</p></div>
+    <div class="card" data-aos="zoom-in" data-aos-delay="300"><h3>Site Reliability Engineering</h3><p>Ensure high availability, system reliability, and performance optimization for critical services.</p></div>
+    <div class="card" data-aos="zoom-in" data-aos-delay="400"><h3>Cloud Cost Optimization</h3><p>Analyze cloud usage and reduce costs while maintaining performance and reliability.</p></div>
+    <div class="card" data-aos="zoom-in" data-aos-delay="500"><h3>Security & Compliance</h3><p>Implement security best practices and compliance for enterprise systems.</p></div>
   </div>
 </section>
 
 <!-- FOUNDER'S VISION -->
-<section class="founder" data-reveal>
+<section class="founder" data-aos="fade-right">
   <div class="founder-img">
     <img src="https://via.placeholder.com/400x400.png?text=Founder+Ashh" alt="Founder Ashh">
   </div>
@@ -152,18 +162,18 @@ footer { padding:40px 20px; text-align:center; border-top:1px solid rgba(255,255
 </section>
 
 <!-- WHY CHOOSE US -->
-<section data-reveal>
+<section data-aos="fade-up">
   <h2 class="section-title">Why Choose Step2Dev</h2>
   <div class="grid">
-    <div class="card"><h3>Expert Team</h3><p>Certified engineers and DevOps experts with global project experience.</p></div>
-    <div class="card"><h3>Proven Track Record</h3><p>Successful deployments for startups, mid-size businesses, and enterprises worldwide.</p></div>
-    <div class="card"><h3>Customer-Focused</h3><p>Client goals are our priority; we provide reliable support and measurable results.</p></div>
-    <div class="card"><h3>Innovative Solutions</h3><p>We leverage the latest cloud technologies, automation tools, and best practices.</p></div>
+    <div class="card" data-aos="flip-left" data-aos-delay="100"><h3>Expert Team</h3><p>Certified engineers and DevOps experts with global project experience.</p></div>
+    <div class="card" data-aos="flip-left" data-aos-delay="200"><h3>Proven Track Record</h3><p>Successful deployments for startups, mid-size businesses, and enterprises worldwide.</p></div>
+    <div class="card" data-aos="flip-left" data-aos-delay="300"><h3>Customer-Focused</h3><p>Client goals are our priority; we provide reliable support and measurable results.</p></div>
+    <div class="card" data-aos="flip-left" data-aos-delay="400"><h3>Innovative Solutions</h3><p>We leverage the latest cloud technologies, automation tools, and best practices.</p></div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section class="faq" data-reveal>
+<section class="faq" data-aos="fade-up">
   <h2 class="section-title">Frequently Asked Questions</h2>
   <div class="faq-item"><h4>What services does Step2Dev provide?</h4><p>Cloud architecture, DevOps automation, SRE consulting, security, and cost optimization.</p></div>
   <div class="faq-item"><h4>Which cloud platforms do you work with?</h4><p>AWS, Microsoft Azure, Google Cloud, DigitalOcean, and hybrid cloud solutions.</p></div>
@@ -172,7 +182,7 @@ footer { padding:40px 20px; text-align:center; border-top:1px solid rgba(255,255
 </section>
 
 <!-- GET IN TOUCH -->
-<section class="cta" data-reveal>
+<section class="cta" data-aos="fade-up" data-aos-delay="200">
   <h2>Get In Touch</h2>
   <p>Ready to transform your business with innovative cloud and DevOps solutions? Reach out to Step2Dev and let's discuss your project today!</p>
   <a href="contact.html">Contact Us</a>
@@ -184,17 +194,9 @@ footer { padding:40px 20px; text-align:center; border-top:1px solid rgba(255,255
 </footer>
 
 <!-- SCRIPTS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script>
-// Scroll reveal animation
-const revealElements = document.querySelectorAll("[data-reveal]");
-const observer = new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{
-        if(entry.isIntersecting){
-            entry.target.classList.add("active");
-        }
-    });
-},{ threshold:0.18 });
-revealElements.forEach(el => observer.observe(el));
+AOS.init({ duration:1000, once:true });
 
 // FAQ toggle
 const faqItems = document.querySelectorAll('.faq-item');
@@ -204,6 +206,11 @@ faqItems.forEach(item => {
     p.style.display = p.style.display === 'block' ? 'none' : 'block';
   });
 });
+
+// Hamburger menu
+const hamburger = document.querySelector('.hamburger');
+const nav = document.querySelector('.nav');
+hamburger.addEventListener('click', () => { nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex'; });
 </script>
 
 </body>
