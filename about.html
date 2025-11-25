@@ -23,16 +23,61 @@ body { background:#0A0F1F; color:#fff; scroll-behavior:smooth; }
 .container { max-width:1200px; margin:0 auto; padding:0 20px; }
 
 /* HEADER */
-.header { position:fixed; top:0; left:0; width:100%; backdrop-filter:blur(15px); background: rgba(10,15,31,0.85); border-bottom:1px solid rgba(255,255,255,0.05); z-index:1000; padding:12px 0; transition:0.3s; }
-.header-inner { display:flex; justify-content:space-between; align-items:center; }
-.brand .logo { font-size:1.8rem; font-weight:700; color:#4AB3FF; transition:0.3s; }
-.brand .tag { font-size:0.85rem; opacity:0.8; }
-.nav a { margin:0 15px; font-weight:500; transition:0.3s; }
-.nav a:hover { color:#4AB3FF; }
-.nav .cta-ghost { padding:8px 18px; border:1px solid #4AB3FF; border-radius:6px; transition:0.3s; }
-.nav .cta-ghost:hover { background:#4AB3FF; color:#fff; }
-.hamburger { display:none; font-size:1.5rem; background:none; border:none; color:#fff; cursor:pointer; }
+.header {
+  width:100%;
+  position:fixed;
+  top:0; left:0;
+  backdrop-filter: blur(15px);
+  background: rgba(10,15,31,0.4);
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  z-index:1000;
+  padding:12px 0;
+}
+.header-inner {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
 
+.brand .logo {
+  font-size:1.7rem;
+  font-weight:700;
+  color:#4AB3FF;
+}
+.brand .tag {
+  font-size:0.85rem;
+  opacity:0.8;
+}
+
+/* NAV */
+.nav a {
+  color:#d9e6ff;
+  text-decoration:none;
+  margin:0 15px;
+  font-size:0.95rem;
+  transition:0.3s;
+}
+.nav a:hover { color:#4AB3FF; }
+
+.nav .cta-ghost {
+  padding:8px 18px;
+  border:1px solid #4AB3FF;
+  border-radius:6px;
+  transition:0.3s;
+}
+.nav .cta-ghost:hover {
+  background:#4AB3FF;
+  color:#fff;
+}
+
+/* HAMBURGER */
+.hamburger {
+  display:none;
+  font-size:1.5rem;
+  color:#fff;
+  background:none;
+  border:none;
+}
 /* HERO */
 .hero { padding-top:160px; padding-bottom:120px; text-align:center; background:linear-gradient(135deg, #0a0f1f 0%, #141a2b 100%); position:relative; overflow:hidden; }
 .hero h1 { font-size:3rem; font-weight:800; margin-bottom:15px; color:#4AB3FF; animation:fadeInDown 1s ease forwards; opacity:0; }
@@ -100,24 +145,32 @@ footer { padding:40px 20px; text-align:center; border-top:1px solid rgba(255,255
 <body>
 
 <!-- HEADER -->
-<header class="header" data-aos="fade-down">
+<header class="header" role="banner">
   <div class="header-inner container">
     <div class="brand">
-      <div class="logo">Step2Dev</div>
-      <div class="tag">Cloud • DevOps • SRE</div>
+      <div class="logo" aria-hidden="false">Step2Dev</div>
+      <div class="tag" aria-hidden="true">Cloud • DevOps • SRE</div>
     </div>
-    <nav class="nav">
+
+    <nav class="nav" role="navigation" aria-label="Main Navigation">
       <a href="index.html">Home</a>
-      <a href="devops.html">DevOps</a>
-      <a href="about.html">About</a>
+      <a href="devops.html">Devops</a>
+      <a href="about.html" target="_blank">About</a>
       <a href="case.html">Case Studies</a>
       <a href="index.html#pricing">Pricing</a>
       <a href="contact.html">Contact</a>
       <a class="cta-ghost" href="index.html#contact">Book a Call</a>
     </nav>
-    <button class="hamburger"><i class="fa-solid fa-bars"></i></button>
+
+    <button class="hamburger" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
   </div>
 </header>
+  
+<!-- HERO -->
+<section class="hero" data-reveal>
+    <h1>Powerful & Scalable Cloud Solutions</h1>
+    <p>We help businesses build secure, scalable, cost-efficient cloud setups using modern technologies and industry-leading cloud platforms.</p>
+</section>
 
 <!-- HERO -->
 <section class="hero">
