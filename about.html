@@ -12,14 +12,15 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* RESET & BASE */
+/* RESET */
 * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter', sans-serif; }
 body { background:#0A0F1F; color:#fff; scroll-behavior:smooth; }
-a { text-decoration:none; color:inherit; }
+
+/* CONTAINER */
 .container { max-width:1200px; margin:0 auto; padding:0 20px; }
 
 /* HEADER */
-.header { width:100%; position:fixed; top:0; left:0; backdrop-filter: blur(15px); background: rgba(10,15,31,0.5); border-bottom:1px solid rgba(255,255,255,0.05); z-index:1000; padding:12px 0; }
+.header { position:fixed; top:0; left:0; width:100%; backdrop-filter:blur(15px); background: rgba(10,15,31,0.5); border-bottom:1px solid rgba(255,255,255,0.05); z-index:1000; padding:12px 0; }
 .header-inner { display:flex; justify-content:space-between; align-items:center; }
 .brand .logo { font-size:1.8rem; font-weight:700; color:#4AB3FF; }
 .brand .tag { font-size:0.85rem; opacity:0.8; }
@@ -117,39 +118,24 @@ footer { padding:40px 20px; text-align:center; border-top:1px solid rgba(255,255
 <!-- WHO WE ARE -->
 <section data-reveal>
   <h2 class="section-title">Who We Are</h2>
-  <p class="text-section">Step2Dev is a team of passionate cloud engineers, DevOps specialists, and SRE professionals. With years of industry experience, we deliver high-quality, secure, and scalable solutions for startups, enterprises, and global companies. We are dedicated to innovation, performance, and long-term client success.</p>
+  <p class="text-section">Step2Dev is a team of passionate cloud engineers, DevOps specialists, and SRE professionals. We deliver high-quality, secure, and scalable solutions for startups, enterprises, and global companies. Innovation, performance, and long-term client success are at our core.</p>
 </section>
 
 <!-- OUR MISSION -->
 <section data-reveal>
   <h2 class="section-title">Our Mission</h2>
-  <p class="text-section">To provide businesses with reliable, efficient, and cost-effective cloud and DevOps solutions that enable growth, reduce complexity, and maximize technological potential. We aim to be a trusted partner for companies navigating digital transformation.</p>
+  <p class="text-section">To provide businesses with reliable, efficient, and cost-effective cloud and DevOps solutions that enable growth, reduce complexity, and maximize technological potential. We aim to be a trusted partner for digital transformation journeys.</p>
 </section>
 
 <!-- WHAT WE DO -->
 <section data-reveal>
   <h2 class="section-title">What We Do</h2>
   <div class="grid">
-    <div class="card">
-      <h3>Cloud Architecture</h3>
-      <p>Design and implement scalable, secure, and cost-efficient cloud environments across AWS, Azure, GCP, and DigitalOcean.</p>
-    </div>
-    <div class="card">
-      <h3>DevOps Automation</h3>
-      <p>Implement CI/CD pipelines, automated deployments, monitoring, and observability to optimize operations.</p>
-    </div>
-    <div class="card">
-      <h3>Site Reliability Engineering</h3>
-      <p>Ensure high availability, system reliability, disaster recovery, and performance optimization for critical services.</p>
-    </div>
-    <div class="card">
-      <h3>Cloud Cost Optimization</h3>
-      <p>Analyze cloud usage and reduce costs while maintaining performance and reliability.</p>
-    </div>
-    <div class="card">
-      <h3>Security & Compliance</h3>
-      <p>Implement security best practices, compliance, and vulnerability assessments for enterprise systems.</p>
-    </div>
+    <div class="card"><h3>Cloud Architecture</h3><p>Design scalable, secure, and cost-efficient cloud environments on AWS, Azure, GCP, and DigitalOcean.</p></div>
+    <div class="card"><h3>DevOps Automation</h3><p>Implement CI/CD pipelines, monitoring, and automated deployments for reliable operations.</p></div>
+    <div class="card"><h3>Site Reliability Engineering</h3><p>Ensure high availability, system reliability, and performance optimization for critical services.</p></div>
+    <div class="card"><h3>Cloud Cost Optimization</h3><p>Analyze cloud usage and reduce costs while maintaining performance and reliability.</p></div>
+    <div class="card"><h3>Security & Compliance</h3><p>Implement security best practices and compliance for enterprise systems.</p></div>
   </div>
 </section>
 
@@ -160,8 +146,8 @@ footer { padding:40px 20px; text-align:center; border-top:1px solid rgba(255,255
   </div>
   <div class="founder-content">
     <h3>Ashh - Founder & CEO</h3>
-    <p>Ashh founded Step2Dev with a vision to empower businesses worldwide to fully leverage cloud, DevOps, and SRE practices. He believes in delivering practical, innovative, and cost-effective solutions that drive growth and scalability.</p>
-    <p>Under his leadership, Step2Dev has successfully completed projects for startups, SMEs, and global enterprises, ensuring high-quality technology solutions with a customer-first approach.</p>
+    <p>Ashh founded Step2Dev to empower businesses to leverage cloud, DevOps, and SRE practices. His vision is delivering practical, innovative, and cost-effective solutions that drive growth and scalability.</p>
+    <p>Under his leadership, Step2Dev has completed projects for startups, SMEs, and global enterprises, ensuring high-quality technology solutions with a customer-first approach.</p>
   </div>
 </section>
 
@@ -172,29 +158,17 @@ footer { padding:40px 20px; text-align:center; border-top:1px solid rgba(255,255
     <div class="card"><h3>Expert Team</h3><p>Certified engineers and DevOps experts with global project experience.</p></div>
     <div class="card"><h3>Proven Track Record</h3><p>Successful deployments for startups, mid-size businesses, and enterprises worldwide.</p></div>
     <div class="card"><h3>Customer-Focused</h3><p>Client goals are our priority; we provide reliable support and measurable results.</p></div>
-    <div class="card"><h3>Innovative Solutions</h3><p>We leverage latest cloud technologies, automation tools, and best practices.</p></div>
+    <div class="card"><h3>Innovative Solutions</h3><p>We leverage the latest cloud technologies, automation tools, and best practices.</p></div>
   </div>
 </section>
 
 <!-- FAQ -->
 <section class="faq" data-reveal>
   <h2 class="section-title">Frequently Asked Questions</h2>
-  <div class="faq-item">
-    <h4>What services does Step2Dev provide?</h4>
-    <p>Cloud architecture, DevOps automation, SRE consulting, security, and cost optimization.</p>
-  </div>
-  <div class="faq-item">
-    <h4>Which cloud platforms do you work with?</h4>
-    <p>AWS, Microsoft Azure, Google Cloud, DigitalOcean, and hybrid cloud solutions.</p>
-  </div>
-  <div class="faq-item">
-    <h4>Can you work with startups?</h4>
-    <p>Yes, we specialize in cost-effective, scalable cloud and DevOps solutions for startups.</p>
-  </div>
-  <div class="faq-item">
-    <h4>How do I start a project with Step2Dev?</h4>
-    <p>You can contact us via our website or book a consultation call to discuss your project needs.</p>
-  </div>
+  <div class="faq-item"><h4>What services does Step2Dev provide?</h4><p>Cloud architecture, DevOps automation, SRE consulting, security, and cost optimization.</p></div>
+  <div class="faq-item"><h4>Which cloud platforms do you work with?</h4><p>AWS, Microsoft Azure, Google Cloud, DigitalOcean, and hybrid cloud solutions.</p></div>
+  <div class="faq-item"><h4>Can you work with startups?</h4><p>Yes, we specialize in cost-effective, scalable cloud and DevOps solutions for startups.</p></div>
+  <div class="faq-item"><h4>How do I start a project with Step2Dev?</h4><p>You can contact us via our website or book a consultation call to discuss your project needs.</p></div>
 </section>
 
 <!-- GET IN TOUCH -->
