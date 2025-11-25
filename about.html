@@ -13,28 +13,14 @@
 
 <style>
 * { margin:0; padding:0; box-sizing:border-box; font-family:"Inter",sans-serif; }
-
 body { background:#0A0F1F; color:#fff; scroll-behavior:smooth; }
 
 /* CONTAINER */
 .container { width:90%; max-width:1300px; margin:auto; }
 
 /* HEADER */
-.header {
-  width:100%;
-  position:fixed;
-  top:0; left:0;
-  backdrop-filter: blur(15px);
-  background: rgba(10,15,31,0.4);
-  border-bottom:1px solid rgba(255,255,255,0.05);
-  z-index:1000;
-  padding:12px 0;
-}
-.header-inner {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
+.header { width:100%; position:fixed; top:0; left:0; backdrop-filter: blur(15px); background: rgba(10,15,31,0.4); border-bottom:1px solid rgba(255,255,255,0.05); z-index:1000; padding:12px 0; }
+.header-inner { display:flex; justify-content:space-between; align-items:center; }
 .brand .logo { font-size:1.7rem; font-weight:700; color:#4AB3FF; }
 .brand .tag { font-size:0.85rem; opacity:0.8; }
 
@@ -59,10 +45,18 @@ body { background:#0A0F1F; color:#fff; scroll-behavior:smooth; }
 .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:30px; padding: 40px 8%; }
 .card { padding:30px; background: rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:16px; text-align:center; transition:.4s; transform: translateY(20px); opacity:0; }
 .card.active { transform:translateY(0); opacity:1; }
-.card img { width:70px; margin-bottom:15px; }
+.card img { width:70px; margin-bottom:15px; border-radius:50%; }
 .card h3 { font-size:1.3rem; margin-bottom:10px; color:#4aa8ff; }
 .card p { color:#c7d9ff; font-size:0.95rem; }
 .card:hover { background: rgba(255,255,255,0.07); box-shadow:0 0 20px rgba(77,163,255,0.2); transform:translateY(-6px); }
+
+/* FOUNDER SECTION */
+.founder-section { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:50px; padding:60px 8%; background: rgba(255,255,255,0.02); border-radius:16px; margin:40px 0; }
+.founder-img { flex:1; min-width:250px; max-width:400px; }
+.founder-img img { width:100%; border-radius:16px; border:2px solid #4AB3FF; }
+.founder-content { flex:2; min-width:250px; }
+.founder-content h3 { font-size:2rem; color:#4AB3FF; margin-bottom:15px; }
+.founder-content p { font-size:1rem; line-height:1.6; color:#c9d8f9; }
 
 /* CTA BOX */
 .cta { text-align:center; margin:60px 0; padding:50px 8%; background: rgba(255,255,255,0.03); border-top:1px solid rgba(255,255,255,0.07); border-bottom:1px solid rgba(255,255,255,0.07); }
@@ -86,7 +80,11 @@ footer p { font-size:0.9rem; color:#b8c8e8; text-align:center; }
 [data-reveal].active { opacity:1; transform:translateY(0); }
 
 /* RESPONSIVE */
-@media(max-width:768px){ .hamburger { display:block; } .nav { display:none; } }
+@media(max-width:768px){ 
+    .hamburger { display:block; } 
+    .nav { display:none; } 
+    .founder-section { flex-direction:column; }
+}
 </style>
 </head>
 
@@ -115,22 +113,22 @@ footer p { font-size:0.9rem; color:#b8c8e8; text-align:center; }
 <!-- HERO -->
 <section class="hero" data-reveal>
   <h1>About Step2Dev</h1>
-  <p>Your partner in building scalable, secure, and cost-efficient cloud & DevOps solutions for businesses worldwide.</p>
+  <p>We are a leading Cloud, DevOps & SRE engineering company committed to empowering businesses worldwide with innovative technology solutions.</p>
 </section>
 
 <!-- WHO WE ARE -->
 <section data-reveal>
   <h2 class="section-title">Who We Are</h2>
-  <p style="max-width:800px; margin:auto; text-align:center; color:#c9d8f9;">
-  Step2Dev is a leading cloud, DevOps, and SRE engineering company dedicated to empowering businesses with modern cloud solutions, automation, and secure infrastructure. Our team blends expertise, innovation, and a customer-first approach to ensure your projects succeed.
+  <p style="max-width:900px; margin:auto; text-align:center; color:#c9d8f9;">
+  Step2Dev is built on the vision of transforming how businesses leverage technology. We combine expertise in cloud computing, automation, and SRE to deliver robust, scalable, and secure infrastructure tailored to your business needs.
   </p>
 </section>
 
 <!-- OUR MISSION -->
 <section data-reveal>
   <h2 class="section-title">Our Mission</h2>
-  <p style="max-width:800px; margin:auto; text-align:center; color:#c9d8f9;">
-  To enable businesses to leverage cloud and DevOps practices to maximize efficiency, reduce costs, and achieve sustainable growth through innovative technology solutions.
+  <p style="max-width:900px; margin:auto; text-align:center; color:#c9d8f9;">
+  Our mission is to empower companies to achieve digital transformation with high-quality cloud solutions, optimized DevOps practices, and reliable infrastructure, ensuring cost efficiency, innovation, and scalability.
   </p>
 </section>
 
@@ -140,28 +138,28 @@ footer p { font-size:0.9rem; color:#b8c8e8; text-align:center; }
   <div class="grid">
     <div class="card">
       <h3>Cloud Architecture</h3>
-      <p>Design and implement scalable, secure, and cost-effective cloud infrastructure.</p>
+      <p>Designing scalable, secure, and optimized cloud infrastructure using AWS, Azure, GCP, and DigitalOcean.</p>
     </div>
     <div class="card">
       <h3>DevOps Automation</h3>
-      <p>Automate deployments, monitoring, CI/CD pipelines, and infrastructure management.</p>
+      <p>Implementing CI/CD pipelines, automated deployments, and monitoring systems to improve efficiency.</p>
     </div>
     <div class="card">
-      <h3>Reliability Engineering</h3>
-      <p>Ensure high availability, disaster recovery, and system reliability using SRE practices.</p>
+      <h3>Site Reliability Engineering</h3>
+      <p>Ensuring high availability, disaster recovery, and system reliability through SRE best practices.</p>
     </div>
   </div>
 </section>
 
-<!-- OUR FOUNDER'S VISION -->
-<section data-reveal>
-  <h2 class="section-title">Our Founder's Vision</h2>
-  <div class="grid">
-    <div class="card">
-      <img src="https://via.placeholder.com/150" alt="Founder Image">
-      <h3>Ashh - Founder & CEO</h3>
-      <p>To help entrepreneurs unlock their potential, scale digital businesses, and achieve financial freedom using cloud and automation technologies.</p>
-    </div>
+<!-- FOUNDER'S VISION -->
+<section class="founder-section" data-reveal>
+  <div class="founder-img">
+    <img src="https://via.placeholder.com/400x400.png?text=Founder+Image" alt="Founder Ashh">
+  </div>
+  <div class="founder-content">
+    <h3>Ashh - Founder & CEO</h3>
+    <p>Our founder Ashh envisioned Step2Dev as a company that enables entrepreneurs and businesses to fully leverage cloud technologies and automation. With over a decade of experience, his mission is to simplify complex infrastructure challenges, scale businesses efficiently, and provide solutions that drive innovation and financial freedom.</p>
+    <p>Under his leadership, Step2Dev has successfully executed projects for clients globally, combining cutting-edge technologies with a customer-first approach.</p>
   </div>
 </section>
 
@@ -171,15 +169,15 @@ footer p { font-size:0.9rem; color:#b8c8e8; text-align:center; }
   <div class="grid">
     <div class="card">
       <h3>Expert Team</h3>
-      <p>Certified cloud and DevOps engineers with years of global experience.</p>
+      <p>Certified engineers with years of global experience, dedicated to delivering excellence.</p>
     </div>
     <div class="card">
-      <h3>Cost Efficient</h3>
-      <p>We design solutions to optimize your infrastructure costs without compromising performance.</p>
+      <h3>Innovative Solutions</h3>
+      <p>We provide modern, cost-effective, and customized cloud and DevOps strategies.</p>
     </div>
     <div class="card">
-      <h3>Proven Track Record</h3>
-      <p>Successful projects and satisfied clients across multiple industries.</p>
+      <h3>Proven Results</h3>
+      <p>Successful projects, satisfied clients, and measurable business impact across industries.</p>
     </div>
   </div>
 </section>
@@ -189,22 +187,22 @@ footer p { font-size:0.9rem; color:#b8c8e8; text-align:center; }
   <h2 class="section-title">FAQs</h2>
   <div class="faq-item">
     <h4>What services does Step2Dev provide?</h4>
-    <p>Cloud solutions, DevOps automation, SRE, and consulting for businesses worldwide.</p>
+    <p>Cloud solutions, DevOps automation, SRE consulting, and technology strategy for businesses worldwide.</p>
   </div>
   <div class="faq-item">
     <h4>Which cloud platforms do you work with?</h4>
-    <p>AWS, Azure, Google Cloud, DigitalOcean, and hybrid cloud architectures.</p>
+    <p>AWS, Microsoft Azure, Google Cloud, DigitalOcean, and hybrid cloud architectures.</p>
   </div>
   <div class="faq-item">
-    <h4>How can I get started?</h4>
-    <p>Contact us via our form or book a consultation call, and we’ll guide you step-by-step.</p>
+    <h4>How can I start working with Step2Dev?</h4>
+    <p>You can contact us via our form or book a consultation call; we’ll guide you through the onboarding process.</p>
   </div>
 </section>
 
 <!-- GET IN TOUCH -->
 <section class="cta" data-reveal>
   <h2>Get In Touch</h2>
-  <p>Ready to take your business to the next level? Reach out to Step2Dev and let’s discuss your project!</p>
+  <p>Ready to transform your business with innovative cloud and DevOps solutions? Contact Step2Dev today and let’s discuss your project!</p>
   <a href="contact.html">Contact Us</a>
 </section>
 
