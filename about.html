@@ -3,97 +3,194 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<title>About • Step2Dev — Cloud, DevOps & SRE Engineering</title>
+<title>About Us — Step2Dev</title>
 
+<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<!-- FontAwesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:"Inter",sans-serif;}
-body{background:#0A0F1F;color:#fff;scroll-behavior:smooth;}
-.container{width:90%;max-width:1300px;margin:auto;}
+* { margin:0; padding:0; box-sizing:border-box; font-family:"Inter",sans-serif; }
+body { background:#0A0F1F; color:#fff; scroll-behavior:smooth; }
+.container { width:90%; max-width:1300px; margin:auto; }
 
-.header{width:100%;position:fixed;top:0;left:0;backdrop-filter:blur(15px);background:rgba(10,15,31,0.4);border-bottom:1px solid rgba(255,255,255,0.05);z-index:1000;padding:12px 0;}
-.header-inner{display:flex;justify-content:space-between;align-items:center;}
-.brand .logo{font-size:1.7rem;font-weight:700;color:#4AB3FF;}
-.brand .tag{font-size:.85rem;opacity:.8;}
-.nav a{color:#d9e6ff;text-decoration:none;margin:0 15px;font-size:.95rem;transition:.3s;}
-.nav a:hover{color:#4AB3FF;}
-.nav .cta-ghost{padding:8px 18px;border:1px solid #4AB3FF;border-radius:6px;}
-.nav .cta-ghost:hover{background:#4AB3FF;color:#fff;}
-.hamburger{display:none;font-size:1.5rem;color:#fff;background:none;border:none;}
+/* HEADER */
+.header {
+  width:100%;
+  position:fixed;
+  top:0; left:0;
+  backdrop-filter: blur(15px);
+  background: rgba(10,15,31,0.4);
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  z-index:1000;
+  padding:12px 0;
+}
+.header-inner {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.brand .logo { font-size:1.7rem; font-weight:700; color:#4AB3FF; }
+.brand .tag { font-size:0.85rem; opacity:0.8; }
+.nav a { color:#d9e6ff; text-decoration:none; margin:0 15px; font-size:0.95rem; transition:0.3s; }
+.nav a:hover { color:#4AB3FF; }
+.nav .cta-ghost { padding:8px 18px; border:1px solid #4AB3FF; border-radius:6px; transition:0.3s; }
+.nav .cta-ghost:hover { background:#4AB3FF; color:#fff; }
+.hamburger { display:none; font-size:1.5rem; color:#fff; background:none; border:none; }
 
-.hero{text-align:center;padding-top:150px;padding-bottom:60px;}
-.hero h1{font-size:3rem;font-weight:800;margin-bottom:12px;}
-.hero p{max-width:650px;margin:auto;font-size:1.1rem;color:#c9d8f9;}
+/* HERO */
+.hero {
+  padding-top: 150px;
+  padding-bottom: 80px;
+  text-align: center;
+}
+.hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 10px; color: #ffffff; }
+.hero p { max-width: 650px; margin: auto; font-size: 1.1rem; color: #c9d8f9; }
 
-.section-title{text-align:center;font-size:2.2rem;font-weight:700;margin:50px 0 25px;}
+/* SECTION TITLE */
+.section-title { text-align: center; font-size: 2.2rem; font-weight: 700; margin-bottom: 40px; color: #fff; }
 
-.about-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;padding:40px 8%;}
+/* GRID */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 30px; padding: 40px 8%; }
 
-.about-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:35px;transition:.4s;text-align:left;}
-.about-card:hover{background:rgba(255,255,255,0.07);box-shadow:0 0 20px rgba(77,163,255,0.2);} 
-.about-card h3{font-size:1.5rem;color:#4AB3FF;margin-bottom:10px;} 
-.about-card p{color:#c7d9ff;font-size:1rem;line-height:1.6;} 
+/* CARD */
+.card { padding: 30px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; text-align: center; transition: .4s; transform: translateY(20px); opacity: 0; }
+.card.active { transform: translateY(0); opacity: 1; }
+.card img { width: 70px; margin-bottom: 15px; }
+.card h3 { font-size: 1.3rem; margin-bottom: 10px; color: #4aa8ff; }
+.card p { color: #c7d9ff; font-size: 0.95rem; }
+.card:hover { background: rgba(255,255,255,0.07); box-shadow: 0 0 20px rgba(77,163,255,0.2); transform: translateY(-6px); }
 
-.founder{display:flex;flex-wrap:wrap;align-items:center;gap:40px;padding:40px 8%;}
-.founder img{width:230px;height:230px;border-radius:50%;object-fit:cover;border:3px solid #4AB3FF;}
-.founder-info h2{font-size:2rem;margin-bottom:10px;color:#4AB3FF;}
-.founder-info p{color:#c7d8ff;font-size:1rem;line-height:1.7;max-width:650px;}
+/* FOUNDER SECTION */
+.founder {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+  padding:60px 8%;
+  gap:40px;
+}
+.founder img {
+  max-width:300px;
+  border-radius:16px;
+  box-shadow:0 0 25px rgba(77,163,255,0.3);
+}
+.founder-text {
+  max-width:600px;
+}
+.founder-text h2 { font-size:2rem; color:#4AB3FF; margin-bottom:15px; }
+.founder-text p { font-size:1rem; color:#c7d9ff; line-height:1.6; }
 
-.values{padding:40px 8%;}
-.values-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;}
-.value-box{background:rgba(255,255,255,0.04);padding:25px;border-radius:16px;border:1px solid rgba(255,255,255,0.08);transition:.3s;}
-.value-box:hover{background:rgba(255,255,255,0.07);} 
-.value-box h4{color:#4AB3FF;margin-bottom:10px;font-size:1.2rem;} 
-.value-box p{color:#c7d8ff;font-size:.95rem;} 
+/* CTA BOX */
+.cta { text-align: center; margin: 60px 0; padding: 50px 8%; background: rgba(255,255,255,0.03); border-top: 1px solid rgba(255,255,255,0.07); border-bottom: 1px solid rgba(255,255,255,0.07); }
+.cta h2 { font-size: 2rem; font-weight: 700; }
+.cta p { max-width: 500px; margin: auto; margin-bottom: 25px; color: #c7d8ff; }
+.cta a { display: inline-block; padding: 12px 30px; background: #4da3ff; color: #fff; font-weight: 600; border-radius: 8px; text-decoration: none; transition: .3s; }
+.cta a:hover { background: #2779d7; }
 
-footer{padding:40px 8%;margin-top:60px;background:rgba(255,255,255,0.03);border-top:1px solid rgba(255,255,255,0.07);} 
-footer p{text-align:center;color:#b8c8e8;font-size:.9rem;} 
+/* FOOTER */
+footer { padding: 40px 8%; margin-top: 60px; background: rgba(255,255,255,0.03); border-top: 1px solid rgba(255,255,255,0.07); }
+footer p { font-size: 0.9rem; color: #b8c8e8; text-align: center; }
 
-[data-reveal]{opacity:0;transform:translateY(35px);transition:1s ease;} 
-[data-reveal].active{opacity:1;transform:translateY(0);} 
+/* REVEAL ANIMATION */
+[data-reveal] { opacity: 0; transform: translateY(35px); transition: 1s ease; }
+[data-reveal].active { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media(max-width:768px) {
+  .founder { flex-direction:column; text-align:center; }
+  .founder img { max-width:80%; }
+}
 </style>
 </head>
 
 <body>
-<header class="header"><div class="header-inner container"><div class="brand"><div class="logo">Step2Dev</div><div class="tag">Cloud • DevOps • SRE</div></div><nav class="nav"><a href="index.html">Home</a><a href="devops.html">DevOps</a><a href="about.html">About</a><a href="case.html">Case Studies</a><a href="index.html#pricing">Pricing</a><a href="contact.html">Contact</a><a class="cta-ghost" href="index.html#contact">Book a Call</a></nav></div></header>
 
-<section class="hero" data-reveal><h1>About Step2Dev</h1><p>We empower businesses and individuals with DevOps, Cloud Engineering, Automation & SRE excellence.</p></section>
+<!-- HEADER -->
+<header class="header" role="banner">
+  <div class="header-inner container">
+    <div class="brand">
+      <div class="logo">Step2Dev</div>
+      <div class="tag">Cloud • DevOps • SRE</div>
+    </div>
 
-<h2 class="section-title" data-reveal>Who We Are</h2>
-<div class="about-wrap">
-  <div class="about-card" data-reveal><h3>Our Purpose</h3><p>Step2Dev is a modern engineering platform helping individuals and companies build strong systems with Cloud, DevOps, Automation & Infrastructure best practices.</p></div>
-  <div class="about-card" data-reveal><h3>What We Do</h3><p>We architect scalable cloud setups, create automation workflows, deliver DevOps pipelines, and train people to build high‑income tech careers.</p></div>
-  <div class="about-card" data-reveal><h3>Who We Help</h3><p>Students, professionals, startups, SaaS founders, and businesses needing reliable cloud environments and DevOps automation.</p></div>
-</div>
-
-<h2 class="section-title" data-reveal>Meet the Founder</h2>
-<div class="founder" data-reveal>
-  <img src="https://i.imgur.com/3G0yYQJ.jpeg" alt="Founder Image">
-  <div class="founder-info">
-    <h2>Ashh — CEO & DevOps Engineer</h2>
-    <p>Ashh is a Cloud & DevOps Engineer who has helped 100+ developers and entrepreneurs build skills, deploy scalable applications, and create digital income streams. Known for simplifying complex tech, Ashh blends practical DevOps, CI/CD automation, cloud design, and SRE principles to build reliable, production‑grade systems.</p>
-    <p>With hands‑on experience in AWS, Docker, Kubernetes, Terraform, GitHub Actions, and site reliability engineering, Ashh has built Step2Dev to make modern tech knowledge accessible, affordable, and actionable.</p>
+    <nav class="nav" role="navigation">
+      <a href="index.html">Home</a>
+      <a href="devops.html">DevOps</a>
+      <a href="about.html">About</a>
+      <a href="case.html">Case Studies</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="contact.html">Contact</a>
+      <a class="cta-ghost" href="index.html#contact">Book a Call</a>
+    </nav>
   </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" data-reveal>
+    <h1>About Step2Dev</h1>
+    <p>We are passionate about delivering reliable, scalable, and cost-efficient cloud solutions. Our mission is to help businesses innovate, optimize, and grow using modern technologies.</p>
+</section>
+
+<!-- FOUNDER SECTION -->
+<section class="founder" data-reveal>
+    <img src="https://via.placeholder.com/300" alt="Founder Image">
+    <div class="founder-text">
+        <h2>Meet Our Founder — Ashh</h2>
+        <p>Ashh is a Cloud & DevOps expert with over 10 years of experience helping startups and enterprises achieve operational excellence. He believes in automation, scalability, and building solutions that drive real business results.</p>
+        <p>Under his guidance, Step2Dev has successfully delivered 100+ cloud projects, optimized costs for large-scale infrastructures, and implemented robust DevOps pipelines for continuous growth.</p>
+    </div>
+</section>
+
+<!-- GRID -->
+<h2 class="section-title" data-reveal>Our Services</h2>
+<div class="grid">
+    <div class="card" data-reveal>
+        <img src="https://www.svgrepo.com/show/448266/aws.svg" alt="AWS">
+        <h3>AWS Cloud</h3>
+        <p>Enterprise-grade cloud platform trusted globally for high-scale workloads and performance.</p>
+    </div>
+    <div class="card" data-reveal>
+        <img src="https://www.svgrepo.com/show/303372/azure-1-logo.svg" alt="Azure">
+        <h3>Microsoft Azure</h3>
+        <p>Hybrid cloud, enterprise apps, and seamless Microsoft integration for modern businesses.</p>
+    </div>
+    <div class="card" data-reveal>
+        <img src="https://www.svgrepo.com/show/353805/google-cloud.svg" alt="GCP">
+        <h3>Google Cloud</h3>
+        <p>Advanced AI, ML, data analytics, and modern infrastructure solutions for enterprises.</p>
+    </div>
+    <div class="card" data-reveal>
+        <img src="https://www.svgrepo.com/show/448218/digital-ocean.svg" alt="DigitalOcean">
+        <h3>Digital Ocean</h3>
+        <p>Affordable cloud hosting designed for startups and mid-size projects with simplicity.</p>
+    </div>
 </div>
 
-<h2 class="section-title" data-reveal>Our Core Values</h2>
-<div class="values">
-  <div class="values-grid">
-    <div class="value-box" data-reveal><h4>Innovation</h4><p>We constantly explore modern tools, automation systems, and scalable cloud solutions.</p></div>
-    <div class="value-box" data-reveal><h4>Transparency</h4><p>Clear pricing, honest work, and professional communication define our service.</p></div>
-    <div class="value-box" data-reveal><h4>Reliability</h4><p>We build systems designed to stay online, secure, and efficient.</p></div>
-    <div class="value-box" data-reveal><h4>Growth</h4><p>Helping individuals secure high‑income tech careers is part of our mission.</p></div>
-  </div>
-</div>
+<!-- CTA -->
+<section class="cta" data-reveal>
+    <h2>Partner With Us</h2>
+    <p>Looking for a cloud strategy tailored to your business needs? Our team is ready to help.</p>
+    <a href="contact.html">Get in Touch</a>
+</section>
 
-<footer><p>© 2025 Step2Dev — All Rights Reserved</p></footer>
+<!-- FOOTER -->
+<footer>
+    <p>© 2025 Step2Dev — All Rights Reserved</p>
+</footer>
 
+<!-- SCROLL REVEAL SCRIPT -->
 <script>
-const reveal=document.querySelectorAll("[data-reveal]");
-const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("active");});},{threshold:.2});
-reveal.forEach(el=>obs.observe(el));
+const revealElements = document.querySelectorAll("[data-reveal]");
+const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){ entry.target.classList.add("active"); }
+    });
+},{ threshold: 0.18 });
+revealElements.forEach(el => observer.observe(el));
 </script>
+
 </body>
 </html>
