@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<title>About Us — Step2Dev</title>
+<title>About Step2Dev — Cloud, DevOps & SRE Engineering</title>
 
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -13,7 +13,10 @@
 
 <style>
 * { margin:0; padding:0; box-sizing:border-box; font-family:"Inter",sans-serif; }
+
 body { background:#0A0F1F; color:#fff; scroll-behavior:smooth; }
+
+/* CONTAINER */
 .container { width:90%; max-width:1300px; margin:auto; }
 
 /* HEADER */
@@ -34,89 +37,69 @@ body { background:#0A0F1F; color:#fff; scroll-behavior:smooth; }
 }
 .brand .logo { font-size:1.7rem; font-weight:700; color:#4AB3FF; }
 .brand .tag { font-size:0.85rem; opacity:0.8; }
+
+/* NAV */
 .nav a { color:#d9e6ff; text-decoration:none; margin:0 15px; font-size:0.95rem; transition:0.3s; }
 .nav a:hover { color:#4AB3FF; }
 .nav .cta-ghost { padding:8px 18px; border:1px solid #4AB3FF; border-radius:6px; transition:0.3s; }
 .nav .cta-ghost:hover { background:#4AB3FF; color:#fff; }
+
+/* HAMBURGER */
 .hamburger { display:none; font-size:1.5rem; color:#fff; background:none; border:none; }
 
 /* HERO */
-.hero {
-  padding-top: 150px;
-  padding-bottom: 80px;
-  text-align: center;
-}
-.hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 10px; color: #ffffff; }
-.hero p { max-width: 650px; margin: auto; font-size: 1.1rem; color: #c9d8f9; }
+.hero { padding-top:150px; padding-bottom:80px; text-align:center; }
+.hero h1 { font-size:3rem; font-weight:800; margin-bottom:10px; color:#ffffff; }
+.hero p { max-width:650px; margin:auto; font-size:1.1rem; color:#c9d8f9; }
 
 /* SECTION TITLE */
-.section-title { text-align: center; font-size: 2.2rem; font-weight: 700; margin-bottom: 40px; color: #fff; }
+.section-title { text-align:center; font-size:2.2rem; font-weight:700; margin-bottom:40px; color:#fff; }
 
 /* GRID */
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 30px; padding: 40px 8%; }
-
-/* CARD */
-.card { padding: 30px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; text-align: center; transition: .4s; transform: translateY(20px); opacity: 0; }
-.card.active { transform: translateY(0); opacity: 1; }
-.card img { width: 70px; margin-bottom: 15px; }
-.card h3 { font-size: 1.3rem; margin-bottom: 10px; color: #4aa8ff; }
-.card p { color: #c7d9ff; font-size: 0.95rem; }
-.card:hover { background: rgba(255,255,255,0.07); box-shadow: 0 0 20px rgba(77,163,255,0.2); transform: translateY(-6px); }
-
-/* FOUNDER SECTION */
-.founder {
-  display:flex;
-  flex-wrap:wrap;
-  align-items:center;
-  justify-content:center;
-  padding:60px 8%;
-  gap:40px;
-}
-.founder img {
-  max-width:300px;
-  border-radius:16px;
-  box-shadow:0 0 25px rgba(77,163,255,0.3);
-}
-.founder-text {
-  max-width:600px;
-}
-.founder-text h2 { font-size:2rem; color:#4AB3FF; margin-bottom:15px; }
-.founder-text p { font-size:1rem; color:#c7d9ff; line-height:1.6; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:30px; padding: 40px 8%; }
+.card { padding:30px; background: rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:16px; text-align:center; transition:.4s; transform: translateY(20px); opacity:0; }
+.card.active { transform:translateY(0); opacity:1; }
+.card img { width:70px; margin-bottom:15px; }
+.card h3 { font-size:1.3rem; margin-bottom:10px; color:#4aa8ff; }
+.card p { color:#c7d9ff; font-size:0.95rem; }
+.card:hover { background: rgba(255,255,255,0.07); box-shadow:0 0 20px rgba(77,163,255,0.2); transform:translateY(-6px); }
 
 /* CTA BOX */
-.cta { text-align: center; margin: 60px 0; padding: 50px 8%; background: rgba(255,255,255,0.03); border-top: 1px solid rgba(255,255,255,0.07); border-bottom: 1px solid rgba(255,255,255,0.07); }
-.cta h2 { font-size: 2rem; font-weight: 700; }
-.cta p { max-width: 500px; margin: auto; margin-bottom: 25px; color: #c7d8ff; }
-.cta a { display: inline-block; padding: 12px 30px; background: #4da3ff; color: #fff; font-weight: 600; border-radius: 8px; text-decoration: none; transition: .3s; }
-.cta a:hover { background: #2779d7; }
+.cta { text-align:center; margin:60px 0; padding:50px 8%; background: rgba(255,255,255,0.03); border-top:1px solid rgba(255,255,255,0.07); border-bottom:1px solid rgba(255,255,255,0.07); }
+.cta h2 { font-size:2rem; font-weight:700; }
+.cta p { max-width:500px; margin:auto; margin-bottom:25px; color:#c7d8ff; }
+.cta a { display:inline-block; padding:12px 30px; background:#4da3ff; color:#fff; font-weight:600; border-radius:8px; text-decoration:none; transition:.3s; }
+.cta a:hover { background:#2779d7; }
+
+/* FAQ */
+.faq { padding:40px 8%; }
+.faq-item { background: rgba(255,255,255,0.05); border-radius:12px; margin-bottom:15px; padding:20px; cursor:pointer; }
+.faq-item h4 { color:#4AB3FF; }
+.faq-item p { display:none; color:#c9d8f9; margin-top:10px; }
 
 /* FOOTER */
-footer { padding: 40px 8%; margin-top: 60px; background: rgba(255,255,255,0.03); border-top: 1px solid rgba(255,255,255,0.07); }
-footer p { font-size: 0.9rem; color: #b8c8e8; text-align: center; }
+footer { padding:40px 8%; margin-top:60px; background: rgba(255,255,255,0.03); border-top:1px solid rgba(255,255,255,0.07); }
+footer p { font-size:0.9rem; color:#b8c8e8; text-align:center; }
 
 /* REVEAL ANIMATION */
-[data-reveal] { opacity: 0; transform: translateY(35px); transition: 1s ease; }
-[data-reveal].active { opacity: 1; transform: translateY(0); }
+[data-reveal] { opacity:0; transform:translateY(35px); transition:1s ease; }
+[data-reveal].active { opacity:1; transform:translateY(0); }
 
 /* RESPONSIVE */
-@media(max-width:768px) {
-  .founder { flex-direction:column; text-align:center; }
-  .founder img { max-width:80%; }
-}
+@media(max-width:768px){ .hamburger { display:block; } .nav { display:none; } }
 </style>
 </head>
 
 <body>
 
 <!-- HEADER -->
-<header class="header" role="banner">
+<header class="header">
   <div class="header-inner container">
     <div class="brand">
       <div class="logo">Step2Dev</div>
       <div class="tag">Cloud • DevOps • SRE</div>
     </div>
-
-    <nav class="nav" role="navigation">
+    <nav class="nav">
       <a href="index.html">Home</a>
       <a href="devops.html">DevOps</a>
       <a href="about.html">About</a>
@@ -125,71 +108,132 @@ footer p { font-size: 0.9rem; color: #b8c8e8; text-align: center; }
       <a href="contact.html">Contact</a>
       <a class="cta-ghost" href="index.html#contact">Book a Call</a>
     </nav>
+    <button class="hamburger"><i class="fa-solid fa-bars"></i></button>
   </div>
 </header>
 
 <!-- HERO -->
 <section class="hero" data-reveal>
-    <h1>About Step2Dev</h1>
-    <p>We are passionate about delivering reliable, scalable, and cost-efficient cloud solutions. Our mission is to help businesses innovate, optimize, and grow using modern technologies.</p>
+  <h1>About Step2Dev</h1>
+  <p>Your partner in building scalable, secure, and cost-efficient cloud & DevOps solutions for businesses worldwide.</p>
 </section>
 
-<!-- FOUNDER SECTION -->
-<section class="founder" data-reveal>
-    <img src="https://media.licdn.com/dms/image/v2/D5603AQHjADbvsCofOA/profile-displayphoto-shrink_400_400/B56ZijDkVTHUAg-/0/1755082281313?e=1765411200&v=beta&t=2s7XOUYu0_7ssLoayUCYtxCQ5PJpAAFXm16cmBZvITI" alt="Founder Image">
-    <div class="founder-text">
-        <h2>Meet Our Founder — Ashh</h2>
-        <p>Ashh is a Cloud & DevOps expert with over 10 years of experience helping startups and enterprises achieve operational excellence. He believes in automation, scalability, and building solutions that drive real business results.</p>
-        <p>Under his guidance, Step2Dev has successfully delivered 100+ cloud projects, optimized costs for large-scale infrastructures, and implemented robust DevOps pipelines for continuous growth.</p>
-    </div>
+<!-- WHO WE ARE -->
+<section data-reveal>
+  <h2 class="section-title">Who We Are</h2>
+  <p style="max-width:800px; margin:auto; text-align:center; color:#c9d8f9;">
+  Step2Dev is a leading cloud, DevOps, and SRE engineering company dedicated to empowering businesses with modern cloud solutions, automation, and secure infrastructure. Our team blends expertise, innovation, and a customer-first approach to ensure your projects succeed.
+  </p>
 </section>
 
-<!-- GRID -->
-<h2 class="section-title" data-reveal>Our Services</h2>
-<div class="grid">
-    <div class="card" data-reveal>
-        <img src="https://www.svgrepo.com/show/448266/aws.svg" alt="AWS">
-        <h3>AWS Cloud</h3>
-        <p>Enterprise-grade cloud platform trusted globally for high-scale workloads and performance.</p>
-    </div>
-    <div class="card" data-reveal>
-        <img src="https://www.svgrepo.com/show/303372/azure-1-logo.svg" alt="Azure">
-        <h3>Microsoft Azure</h3>
-        <p>Hybrid cloud, enterprise apps, and seamless Microsoft integration for modern businesses.</p>
-    </div>
-    <div class="card" data-reveal>
-        <img src="https://www.svgrepo.com/show/353805/google-cloud.svg" alt="GCP">
-        <h3>Google Cloud</h3>
-        <p>Advanced AI, ML, data analytics, and modern infrastructure solutions for enterprises.</p>
-    </div>
-    <div class="card" data-reveal>
-        <img src="https://www.svgrepo.com/show/448218/digital-ocean.svg" alt="DigitalOcean">
-        <h3>Digital Ocean</h3>
-        <p>Affordable cloud hosting designed for startups and mid-size projects with simplicity.</p>
-    </div>
-</div>
+<!-- OUR MISSION -->
+<section data-reveal>
+  <h2 class="section-title">Our Mission</h2>
+  <p style="max-width:800px; margin:auto; text-align:center; color:#c9d8f9;">
+  To enable businesses to leverage cloud and DevOps practices to maximize efficiency, reduce costs, and achieve sustainable growth through innovative technology solutions.
+  </p>
+</section>
 
-<!-- CTA -->
+<!-- WHAT WE DO -->
+<section data-reveal>
+  <h2 class="section-title">What We Do</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Cloud Architecture</h3>
+      <p>Design and implement scalable, secure, and cost-effective cloud infrastructure.</p>
+    </div>
+    <div class="card">
+      <h3>DevOps Automation</h3>
+      <p>Automate deployments, monitoring, CI/CD pipelines, and infrastructure management.</p>
+    </div>
+    <div class="card">
+      <h3>Reliability Engineering</h3>
+      <p>Ensure high availability, disaster recovery, and system reliability using SRE practices.</p>
+    </div>
+  </div>
+</section>
+
+<!-- OUR FOUNDER'S VISION -->
+<section data-reveal>
+  <h2 class="section-title">Our Founder's Vision</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="https://via.placeholder.com/150" alt="Founder Image">
+      <h3>Ashh - Founder & CEO</h3>
+      <p>To help entrepreneurs unlock their potential, scale digital businesses, and achieve financial freedom using cloud and automation technologies.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section data-reveal>
+  <h2 class="section-title">Why Choose Step2Dev</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Expert Team</h3>
+      <p>Certified cloud and DevOps engineers with years of global experience.</p>
+    </div>
+    <div class="card">
+      <h3>Cost Efficient</h3>
+      <p>We design solutions to optimize your infrastructure costs without compromising performance.</p>
+    </div>
+    <div class="card">
+      <h3>Proven Track Record</h3>
+      <p>Successful projects and satisfied clients across multiple industries.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section data-reveal class="faq">
+  <h2 class="section-title">FAQs</h2>
+  <div class="faq-item">
+    <h4>What services does Step2Dev provide?</h4>
+    <p>Cloud solutions, DevOps automation, SRE, and consulting for businesses worldwide.</p>
+  </div>
+  <div class="faq-item">
+    <h4>Which cloud platforms do you work with?</h4>
+    <p>AWS, Azure, Google Cloud, DigitalOcean, and hybrid cloud architectures.</p>
+  </div>
+  <div class="faq-item">
+    <h4>How can I get started?</h4>
+    <p>Contact us via our form or book a consultation call, and we’ll guide you step-by-step.</p>
+  </div>
+</section>
+
+<!-- GET IN TOUCH -->
 <section class="cta" data-reveal>
-    <h2>Partner With Us</h2>
-    <p>Looking for a cloud strategy tailored to your business needs? Our team is ready to help.</p>
-    <a href="contact.html">Get in Touch</a>
+  <h2>Get In Touch</h2>
+  <p>Ready to take your business to the next level? Reach out to Step2Dev and let’s discuss your project!</p>
+  <a href="contact.html">Contact Us</a>
 </section>
 
 <!-- FOOTER -->
 <footer>
-    <p>© 2025 Step2Dev — All Rights Reserved</p>
+  <p>© 2025 Step2Dev — All Rights Reserved</p>
 </footer>
 
-<!-- SCROLL REVEAL SCRIPT -->
+<!-- SCRIPTS -->
 <script>
+// Scroll reveal
 const revealElements = document.querySelectorAll("[data-reveal]");
 const observer = new IntersectionObserver((entries)=>{
     entries.forEach(entry=>{
-        if(entry.isIntersecting){ entry.target.classList.add("active"); }
+        if(entry.isIntersecting){
+            entry.target.classList.add("active");
+        }
     });
-},{ threshold: 0.18 });
+},{ threshold:0.18 });
 revealElements.forEach(el => observer.observe(el));
+
+// FAQ toggle
+const faqItems = document.querySelectorAll('.faq-item');
+faqItems.forEach(item => {
+  item.addEventListener('click', () => {
+    const p = item.querySelector('p');
+    p.style.display = p.style.display === 'block' ? 'none' : 'block';
+  });
+});
 </script>
 
 </body>
