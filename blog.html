@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Step2Dev Blog — Cloud, DevOps & SRE Insights</title>
+
+<!-- SEO Meta -->
+<meta name="description" content="Step2Dev Blog — Learn Cloud, DevOps, SRE, CI/CD, Kubernetes, AWS, automated deployments, and cloud optimization. Premium guides for startups and businesses.">
+<meta name="keywords" content="DevOps blog, Cloud blog, SRE blog, CI/CD, AWS, Kubernetes, Tech blog, Step2Dev, DevOps guide, Cloud architecture">
+<meta name="author" content="Step2Dev">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Step2Dev Blog — Cloud, DevOps & SRE Insights">
+<meta property="og:description" content="High-quality guides for cloud architecture, DevOps pipelines, SRE practices, Kubernetes, AWS, CI/CD automation, and more.">
+<meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Step2Dev+Blog">
+<meta property="og:type" content="website">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+body{background:#0A0F1F;color:#fff;}
+
+/* HEADER */
+.header{position:fixed;top:0;left:0;width:100%;padding:15px 0;background:rgba(10,15,31,0.5);backdrop-filter:blur(15px);border-bottom:1px solid rgba(255,255,255,0.07);z-index:1000;}
+.header-inner{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;}
+.logo{color:#4AB3FF;font-size:1.8rem;font-weight:800;}
+.nav a{margin:0 14px;color:#fff;font-weight:500;transition:.3s;}
+.nav a:hover{color:#4AB3FF;}
+
+/* HERO */
+.hero{padding-top:140px;padding-bottom:60px;text-align:center;}
+.hero h1{font-size:3rem;color:#4AB3FF;font-weight:800;}
+.hero p{font-size:1.15rem;color:#c9d8f9;margin-top:10px;}
+
+/* BLOG GRID */
+.blog-section{max-width:1200px;margin:70px auto;padding:0 20px;}
+.section-title{text-align:center;font-size:2.2rem;font-weight:700;margin-bottom:40px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;}
+.card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;transition:.4s;opacity:0;transform:translateY(30px);}
+.card.active{opacity:1;transform:translateY(0);}
+.card img{width:100%;height:180px;object-fit:cover;}
+.card-content{padding:20px;}
+.card h3{font-size:1.3rem;color:#4AB3FF;margin-bottom:10px;}
+.card p{color:#c9d8f9;font-size:0.95rem;margin-bottom:15px;}
+.card a{display:inline-block;color:#4AB3FF;font-weight:600;transition:.3s;}
+.card a:hover{color:#fff;}
+
+/* FOOTER */
+footer{text-align:center;padding:40px 0;margin-top:80px;border-top:1px solid rgba(255,255,255,0.05);color:#b8c8e8;}
+
+/* ANIMATIONS */
+[data-reveal]{opacity:0;transform:translateY(25px);transition:1s ease;}
+[data-reveal].active{opacity:1;transform:translateY(0);}
+
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">Step2Dev</div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="devops.html">DevOps</a>
+      <a href="about.html">About</a>
+      <a href="blog.html">Blog</a>
+      <a href="case.html">Case Studies</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" data-reveal>
+  <h1>Step2Dev Blog</h1>
+  <p>Insights, guides, and expert knowledge in Cloud Engineering, DevOps, CI/CD, SRE, and infrastructure automation.</p>
+</section>
+
+<!-- BLOG GRID -->
+<section class="blog-section" data-reveal>
+  <h2 class="section-title">Latest Articles</h2>
+
+  <div class="grid">
+
+    <!-- BLOG 1 -->
+    <div class="card" data-reveal>
+      <img src="https://via.placeholder.com/500x300.png?text=DevOps+Pipeline" alt="DevOps Pipeline">
+      <div class="card-content">
+        <h3>How to Build a Modern CI/CD Pipeline (Step-by-Step)</h3>
+        <p>Learn how startups and enterprises automate deployment using GitHub Actions, Docker, Kubernetes, and zero-downtime strategies.</p>
+        <a href="#">Read More →</a>
+      </div>
+    </div>
+
+    <!-- BLOG 2 -->
+    <div class="card" data-reveal>
+      <img src="https://via.placeholder.com/500x300.png?text=AWS+Cloud" alt="AWS">
+      <div class="card-content">
+        <h3>Top 5 AWS Architectures Every Business Should Use</h3>
+        <p>From scalable VPC design to serverless APIs — discover proven AWS architectures that improve performance and reduce costs.</p>
+        <a href="#">Read More →</a>
+      </div>
+    </div>
+
+    <!-- BLOG 3 -->
+    <div class="card" data-reveal>
+      <img src="https://via.placeholder.com/500x300.png?text=Kubernetes" alt="Kubernetes">
+      <div class="card-content">
+        <h3>Why Kubernetes Is Essential for Modern Applications</h3>
+        <p>Kubernetes allows businesses to scale fast, auto-heal, reduce downtime, and deliver updates safely.</p>
+        <a href="#">Read More →</a>
+      </div>
+    </div>
+
+    <!-- BLOG 4 -->
+    <div class="card" data-reveal>
+      <img src="https://via.placeholder.com/500x300.png?text=Cloud+Cost+Optimization" alt="Cloud Cost Optimization">
+      <div class="card-content">
+        <h3>How to Reduce Cloud Costs Without Breaking Performance</h3>
+        <p>Practical techniques used by top companies to cut costs: autoscaling, right-sizing, spot instances, and more.</p>
+        <a href="#">Read More →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Step2Dev — All Rights Reserved</p>
+</footer>
+
+<script>
+// Scroll reveal animation
+const revealElements=document.querySelectorAll("[data-reveal]");
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("active");
+    }
+  });
+},{threshold:0.15});
+revealElements.forEach(el=>observer.observe(el));
+</script>
+
+</body>
+</html>
