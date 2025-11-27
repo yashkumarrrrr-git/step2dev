@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>How to Build a Modern CI/CD Pipeline (Step-by-Step) — Step2Dev</title>
+
+<!-- SEO Meta -->
+<meta name="description" content="Step-byDev guide: Build a modern CI/CD pipeline using GitHub Actions, Docker, and Kubernetes. Step-by-step best practices, architecture, automation, and production-ready examples to accelerate delivery and reduce risk." />
+<meta name="keywords" content="CI/CD pipeline, GitHub Actions, DevOps pipeline, Docker CI, Kubernetes CI/CD, deployment automation, Step2Dev" />
+<meta name="author" content="Step2Dev" />
+<link rel="canonical" href="https://step2dev.com/blog/how-to-build-ci-cd.html" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="How to Build a Modern CI/CD Pipeline (Step-by-Step) — Step2Dev" />
+<meta property="og:description" content="A practical guide to build production-ready CI/CD: GitHub Actions, Docker builds, tests, artifact storage, and automated Kubernetes deployments." />
+<meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=CI%2FCD+Pipeline+Guide" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://step2dev.com/blog/how-to-build-ci-cd.html" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="How to Build a Modern CI/CD Pipeline (Step-by-Step) — Step2Dev" />
+<meta name="twitter:description" content="Build fast, reliable CI/CD with GitHub Actions, Docker, and Kubernetes. Practical steps, templates, and best practices for startups & teams." />
+<meta name="twitter:image" content="https://via.placeholder.com/1200x630.png?text=CI%2FCD+Pipeline+Guide" />
+
+<!-- Styles (match Step2Dev theme) -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0F1F;--card:#0f1724;--muted:#b9c7e6;--accent:#4AB3FF;--glass:rgba(255,255,255,0.03);
+    --max-width:1100px;
+  }
+  *{box-sizing:border-box}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:#eaf0ff;margin:0;line-height:1.7}
+  .container{max-width:var(--max-width);margin:0 auto;padding:28px}
+  header.site-header{position:sticky;top:0;background:rgba(10,15,31,0.6);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,0.03);z-index:50}
+  .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 28px}
+  .brand{font-weight:700;color:var(--accent);font-size:1.2rem}
+  .nav a{color:#fff;margin-left:18px;text-decoration:none;font-weight:500;opacity:0.95}
+  .hero{padding:44px 0 24px}
+  .post-meta{color:var(--muted);font-size:0.95rem;margin-bottom:16px}
+  .title{font-size:2rem;color:var(--accent);margin:6px 0 14px;font-weight:800}
+  .lede{font-size:1.05rem;color:#cfe3ff;margin-bottom:20px}
+
+  .layout{display:grid;grid-template-columns:1fr 320px;gap:30px;align-items:start}
+  main.article{background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent);padding:26px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+  aside.sidebar{position:relative;top:0}
+
+  /* Table of contents */
+  .toc{background:var(--card);padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);margin-bottom:16px}
+  .toc h4{margin:0 0 10px;color:var(--accent)}
+  .toc a{display:block;color:#d8e9ff;text-decoration:none;padding:8px 4px;border-radius:6px;font-size:0.95rem}
+  .toc a:hover{background:rgba(74,179,255,0.06);color:#fff}
+
+  /* Article content */
+  .article h2{color:#fff;margin-top:22px}
+  .article h3{color:#dfeefe;margin-top:16px}
+  pre{background:#071026;padding:14px;border-radius:8px;overflow:auto;color:#e6f6ff;}
+  code{background:rgba(255,255,255,0.03);padding:3px 6px;border-radius:4px;color:#dff4ff;font-size:0.95rem}
+
+  .card{background:var(--card);padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
+  .cta{display:inline-block;margin-top:18px;padding:10px 16px;background:var(--accent);color:#042033;border-radius:8px;font-weight:700;text-decoration:none}
+
+  .related{display:grid;gap:12px;margin-top:18px}
+  .related a{display:block;color:#d8e9ff;text-decoration:none}
+  footer.site-footer{text-align:center;padding:28px 0;color:#9fb3df;margin-top:30px;border-top:1px solid rgba(255,255,255,0.03)}
+
+  /* responsive */
+  @media(max-width:940px){.layout{grid-template-columns:1fr;}.sidebar{order:2}}
+</style>
+
+<!-- Structured Data (Article schema) -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"How to Build a Modern CI/CD Pipeline (Step-by-Step)",
+  "author":{"@type":"Person","name":"Step2Dev"},
+  "publisher":{"@type":"Organization","name":"Step2Dev","logo":{"@type":"ImageObject","url":"https://via.placeholder.com/600x60.png?text=Step2Dev"}},
+  "datePublished":"2025-11-25",
+  "dateModified":"2025-11-25",
+  "description":"A practical guide to build production-ready CI/CD: GitHub Actions, Docker builds, tests, artifact storage, and automated Kubernetes deployments.",
+  "mainEntityOfPage":{"@type":"WebPage","@id":"https://step2dev.com/blog/how-to-build-ci-cd.html"}
+}
+</script>
+
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner container">
+    <div class="brand">Step2Dev</div>
+    <nav class="nav">
+      <a href="/index.html">Home</a>
+      <a href="/devops.html">DevOps</a>
+      <a href="/blog.html">Blog</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <section class="hero">
+    <div class="post-meta">DevOps • CI/CD • Kubernetes — <time datetime="2025-11-25">Nov 25, 2025</time> • 12 min read</div>
+    <h1 class="title">How to Build a Modern CI/CD Pipeline (Step-by-Step)</h1>
+    <p class="lede">Ship faster and safer: this practical guide walks through designing a robust CI/CD pipeline using GitHub Actions, Docker, artifact storage, and automated Kubernetes deployments — with templates you can copy and run today.</p>
+  </section>
+
+  <div class="layout">
+
+    <!-- MAIN ARTICLE -->
+    <main class="article" id="article">
+      <!-- Intro -->
+      <p>Continuous Integration and Continuous Deployment (CI/CD) are the backbone of modern software delivery. A production-grade CI/CD pipeline automates builds, tests, artifact management, security checks, and safe deployments. Below is a compact, practical pipeline architecture and step-by-step implementation notes you can follow and customize for your projects.</p>
+
+      <!-- Table of contents for in-page navigation -->
+      <div id="toc-mobile" class="toc" style="margin-top:18px">
+        <h4>On this page</h4>
+        <a href="#why-ci-cd">Why CI/CD matters</a>
+        <a href="#pipeline-architecture">Pipeline architecture</a>
+        <a href="#step-1-source-control">Step 1 — Source control</a>
+        <a href="#step-2-ci-build-test">Step 2 — CI: build & test</a>
+        <a href="#step-3-artifacts">Step 3 — Artifacts & registry</a>
+        <a href="#step-4-cd-deployments">Step 4 — CD: staging & production</a>
+        <a href="#observability-security">Observability & security</a>
+        <a href="#pipeline-templates">Pipeline templates</a>
+        <a href="#conclusion">Conclusion & next steps</a>
+      </div>
+
+      <!-- Article sections -->
+      <h2 id="why-ci-cd">Why CI/CD matters</h2>
+      <p>CI/CD reduces manual steps and human error, shortens release cycles, and raises confidence in shipping changes. For teams delivering cloud-native apps, CI/CD enables:</p>
+      <ul>
+        <li>Repeatable, testable builds</li>
+        <li>Automated security and compliance gates</li>
+        <li>Instant rollbacks and safe deployments</li>
+        <li>Faster feedback for developers</li>
+      </ul>
+
+      <h2 id="pipeline-architecture">Pipeline architecture (recommended)</h2>
+      <p>A modern pipeline typically contains:</p>
+      <ol>
+        <li><strong>Source control</strong> (GitHub/GitLab/Bitbucket)</li>
+        <li><strong>CI system</strong> (GitHub Actions, GitLab CI, or Jenkins) for build/test</li>
+        <li><strong>Containerization</strong> using Docker</li>
+        <li><strong>Artifact registry</strong> (Docker Hub, ECR, GCR)</li>
+        <li><strong>CD system / GitOps</strong> (ArgoCD, Flux) for deployments</li>
+        <li><strong>Observability</strong> (Prometheus, Grafana, ELK)</li>
+      </ol>
+
+      <h2 id="step-1-source-control">Step 1 — Source control & branching strategy</h2>
+      <p>Use a clear branching model such as <code>main</code> for production, <code>staging</code> (optional), and feature branches for work-in-progress. Protect the main branch with required reviews and passing checks:</p>
+      <ul>
+        <li>Require at least one code review</li>
+        <li>Require passing CI checks (lint, unit tests)</li>
+        <li>Use small, focused pull requests</li>
+      </ul>
+
+      <h2 id="step-2-ci-build-test">Step 2 — CI: build, test, and static analysis</h2>
+      <p>CI jobs should be fast and reliable. Typical pipeline stages:</p>
+      <ul>
+        <li><strong>Install dependencies</strong> — cache packages</li>
+        <li><strong>Static analysis</strong> — linters, security scanners (e.g., <code>bandit</code>, <code>trivy</code>)</li>
+        <li><strong>Unit & integration tests</strong> — run in parallel when possible</li>
+        <li><strong>Build artifacts</strong> — create Docker images or build artifacts</li>
+      </ul>
+
+      <h3>Example: GitHub Actions workflow (simplified)</h3>
+      <pre><code># .github/workflows/ci.yml
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with: {python-version: '3.11'}
+      - name: Install deps
+        run: pip install -r requirements.txt
+      - name: Lint
+        run: flake8 .
+      - name: Tests
+        run: pytest -q
+      - name: Build Docker image
+        run: docker build -t ghcr.io/yourorg/app:${{ github.sha }} .
+</code></pre>
+
+      <h2 id="step-3-artifacts">Step 3 — Artifact registry & versioning</h2>
+      <p>Push images to a registry with immutable tags (SHA-based). Use separate registries or repos per environment:</p>
+      <ul>
+        <li>Tag with <code>sha</code> for traceability</li>
+        <li>Keep <code>latest</code> only for quick testing (avoid relying on it in production)</li>
+        <li>Use repositories with fine-grained permissions (ECR/GCR/GitHub Container Registry)</li>
+      </ul>
+
+      <h2 id="step-4-cd-deployments">Step 4 — CD: staging and production deployments</h2>
+      <p>There are two common approaches:</p>
+      <ul>
+        <li><strong>Pipeline-driven CD</strong> — CI triggers deployment jobs (GNU-style pipelines or scripted deploy)</li>
+        <li><strong>GitOps</strong> — push desired state (Helm/Kustomize manifests) to a repo and let ArgoCD/Flux reconcile</li>
+      </ul>
+      <p>GitOps is highly recommended for Kubernetes. Example GitOps flow:</p>
+      <ol>
+        <li>CI writes image tag into a <code>staging</code> manifest in a repo</li>
+        <li>ArgoCD sees the change and deploys to staging</li>
+        <li>After smoke tests, update <code>production</code> manifests and let ArgoCD promote</li>
+      </ol>
+
+      <h2 id="observability-security">Observability, tests & security gates</h2>
+      <p>Don’t release blind. Add:</p>
+      <ul>
+        <li>Automated smoke tests post-deploy</li>
+        <li>Health checks and readiness probes</li>
+        <li>Canary or blue-green deployments for low-risk releases</li>
+        <li>Security scans in CI (SCA, SAST), container scanning (Trivy)</li>
+      </ul>
+
+      <h2 id="pipeline-templates">Pipeline templates & snippets</h2>
+      <p>Below is a short sampled snippet to push Docker image to GitHub Container Registry (GHCR):</p>
+      <pre><code># Push to GHCR
+- name: Log in to GitHub Container Registry
+  uses: docker/login-action@v2
+  with:
+    registry: ghcr.io
+    username: ${{ github.actor }}
+    password: ${{ secrets.GITHUB_TOKEN }}
+
+- name: Push image
+  run: |
+    docker build -t ghcr.io/yourorg/app:${{ github.sha }} .
+    docker push ghcr.io/yourorg/app:${{ github.sha }}
+</code></pre>
+
+      <h2 id="conclusion">Conclusion & next steps</h2>
+      <p>Building a modern CI/CD pipeline is an iterative process: start simple, measure, and evolve. Focus on fast feedback loops, automation of risky steps, and safe deployments (canary/rollbacks). For production workloads, combine GitHub Actions (or your CI), Docker registries, and GitOps tools to run reliable, auditable releases.</p>
+
+      <p><strong>Need help implementing this for your team?</strong> Step2Dev designs and delivers production-ready CI/CD and GitOps workflows for startups and enterprises. <a class="cta" href="/contact.html">Book a call</a> and we’ll create a tailored pipeline for your stack.</p>
+
+      <!-- Related posts -->
+      <div style="margin-top:20px">
+        <h3>Related posts</h3>
+        <div class="related">
+          <a href="/blog/aws-architecture-guide.html">Top 5 AWS Architectures Every Business Should Use</a>
+          <a href="/blog/kubernetes-guide.html">Why Kubernetes Is Essential for Modern Applications</a>
+          <a href="/blog/cloud-cost-reduction.html">How to Reduce Cloud Costs Without Breaking Performance</a>
+        </div>
+      </div>
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="card toc" aria-label="Article contents">
+        <h4>Quick links</h4>
+        <a href="#why-ci-cd">Why CI/CD matters</a>
+        <a href="#pipeline-architecture">Pipeline architecture</a>
+        <a href="#step-2-ci-build-test">CI: build & test</a>
+        <a href="#step-4-cd-deployments">CD: deployments</a>
+        <a href="#observability-security">Observability</a>
+      </div>
+
+      <div class="card" style="margin-top:12px">
+        <h4 style="color:var(--accent)">Free CI/CD Checklist</h4>
+        <p style="color:var(--muted)">Want the step-by-step checklist and GitHub Actions templates as a downloadable ZIP? Contact us and we’ll share a ready-to-run pack.</p>
+        <a class="cta" href="/contact.html">Request Checklist</a>
+      </div>
+
+      <div class="card" style="margin-top:12px">
+        <h4 style="color:var(--accent)">Tags</h4>
+        <p style="color:var(--muted)">CI/CD • DevOps • GitHub Actions • Kubernetes • Docker</p>
+      </div>
+    </aside>
+
+  </div> <!-- layout -->
+</div> <!-- container -->
+
+<footer class="site-footer">
+  <div class="container">
+    <p>© 2025 Step2Dev — Cloud, DevOps & SRE Experts • <a href="/privacy.html" style="color:var(--muted)">Privacy</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
